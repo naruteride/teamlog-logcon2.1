@@ -36,9 +36,14 @@ nav {
 }
 
 .nav-wrapper {
-    display: flex;
-    align-items: center;
+    /* display: flex;
+    align-items: center; */
     padding-left: 300px;
+}
+
+#logo-cover {
+    height: 110px;
+    
 }
 
 @media only screen and (min-width: 601px) {
