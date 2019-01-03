@@ -32,24 +32,51 @@ html, body {
 }
 
 nav {
-    /* height: 110px; */
+    
 }
 
 .nav-wrapper {
-    /* display: flex;
-    align-items: center; */
     padding-left: 300px;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    transition: background-color .2s;
+    background-color: #fff;
+}
+nav .brand-logo {
+    color: #448AFF;
+}
+.sidenav li > a {
+    color: #fff;
+    height: 74px;
+    line-height: 74px;
+    font-size: 1.3rem;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
 }
 
 #logo-cover {
     height: 110px;
-    
+    background-image: url(../images/logos/logo-text.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 80%;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    transition: background-color .2s;
+}
+
+#slide-out {
+}
+
+#menu-icon {
+    background-image: url("../images/bars-light.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: 30px;
 }
 
 @media only screen and (min-width: 601px) {
-        nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
-            height: 110px;
-            line-height: 110px;
+    nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
+        height: 110px;
+        line-height: 110px;
     }
 }
 
