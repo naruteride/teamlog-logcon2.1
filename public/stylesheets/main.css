@@ -32,24 +32,55 @@ html, body {
 }
 
 nav {
-    /* height: 110px; */
+    
 }
 
 .nav-wrapper {
-    /* display: flex;
-    align-items: center; */
     padding-left: 300px;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    transition: background-color .2s;
+    background-color: #fff;
+}
+nav .brand-logo {
+    color: #448AFF;
+}
+.sidenav li > a {
+    color: #fff;
+    height: 74px;
+    line-height: 74px;
+    font-size: 1.3rem;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
 }
 
 #logo-cover {
     height: 110px;
-    
+    background-image: url(../images/logos/logo-text.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 80%;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    transition: background-color .2s;
+}
+
+#slide-out {
+}
+
+#menu-icon {
+    background-image: url("../images/bars-light.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 70%;
+    width: 30px;
+}
+
+nav ul a {
+    color: #448AFF;
 }
 
 @media only screen and (min-width: 601px) {
-        nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
-            height: 110px;
-            line-height: 110px;
+    nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
+        height: 110px;
+        line-height: 110px;
     }
 }
 
@@ -57,4 +88,33 @@ nav {
     .nav-wrapper {
         padding-left: 0;
     }
+}
+
+.submit-button {
+    background-color: #448AFFdd;
+    color: #fff;
+}
+
+
+/* label focus color */
+.input-field input[type=text]:focus + label, .input-field input[type=password]:focus + label {
+    color: #448AFF !important;
+}
+/* label underline focus color */
+.input-field input[type=text]:focus, .input-field input[type=password]:focus {
+    border-bottom: 1px solid #448AFF !important;
+}
+/* valid color */
+.input-field input[type=text].valid, .input-field input[type=password].valid {
+    border-bottom: 1px solid #448AFF;
+}
+
+.input-field input[type=password].input-error:focus {
+    border-bottom: 1px solid #F44336 !important;
+}
+/* field input[type=password]:focus + label.label-error {
+    color: #F44336 !important;
+} */
+input[type=password]:not(.browser-default):focus.invalid ~ label.label-error {
+    color: #F44336 !important;
 }
