@@ -24,7 +24,6 @@ router.get('/',(req,res) => {
 })
 
 router.post('/',(req,res) => {
-    console.log(req.body);
     const ment = req.body.ment;
     const user = req.session.user;
     db.query('update Users set PROFILE_COMMENT=? where ID = ?',[ment,user]);

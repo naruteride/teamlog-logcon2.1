@@ -58,10 +58,7 @@ router.get('/',(req,res) => {
                         };
                         transporter.sendMail(mailOptions, (err, response) => {
                             if(err)
-                                console.log(err);
-                            else{
-                                console.log('sibal',response);
-                            }   
+                                console.log(err);   
                         })    
                     }
                 })
