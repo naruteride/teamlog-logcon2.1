@@ -29,6 +29,10 @@
             <div class="nav-wrapper">
                 <a href="#" data-target="slide-out" class="sidenav-trigger waves-effect"><i id="menu-icon" class="material-icons full hide-on-large-only">.</i></a>
                 <a href="#" class="brand-logo">대문</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="#login" class="modal-trigger">로그인</a></li>
+                    <li><a href="#register" class="modal-trigger">회원가입</a></li>
+                </ul>
             </div>
         </nav>
 
@@ -50,5 +54,76 @@
     <footer>
 
     </footer>
+
+    <!-- Modal Structure -->
+    <div id="login" class="modal">
+        <form action="/login" method="POST">
+            <div class="modal-content">
+                <h4>로그인</h4>
+            
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input name="id" placeholder="guchiman12" id="Lusername" type="text" class="validate" required>
+                        <label for="Lusername">User Name</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input name="pw" placeholder="•••••••••••••••••••" id="Lpassword" type="password" class="validate" required>
+                        <label for="Lpassword">Password</label>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="waves-effect btn-flat submit-button">로그인</button>
+                <a href="#!" class="modal-close waves-effect btn-flat">뒤로</a>
+            </div>
+        </form>
+    </div>
+
+    <!-- Modal Structure -->
+    <div id="register" class="modal">
+        <form action="/register" method="POST">
+            <div class="modal-content">
+                <h4>회원가입</h4>
+            
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input name="id" placeholder="guchiman12" id="Rusername" type="text" class="validate" required>
+                        <label for="Rusername">User Name</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input name="pw" placeholder="jung5hak2seng7chan!" id="Rpassword" type="password" class="validate" required>
+                        <label for="Rpassword">Password</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input placeholder="•••••••••••••••••••" id="confirmPassword" type="password" class="validate" required>
+                        <label id="confirmPassword-label" for="confirmPassword">Confirm Password</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input name="email" placeholder="IiLeohGeLaDo66@gmail.com" id="email" type="email" class="validate" required>
+                        <label for="email">Email</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input name="school" placeholder="오류중학교" id="school" type="text" class="validate" required>
+                        <label for="school">school</label>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="waves-effect btn-flat submit-button">회원가입</button>
+                <a href="#!" class="modal-close waves-effect btn-flat">뒤로</a>
+            </div>
+        </form>
+    </div>
 </body>
 </html>
