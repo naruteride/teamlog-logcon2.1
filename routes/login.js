@@ -21,10 +21,10 @@ router.get('/',(req,res) => {
     const id = req.body.id;
     var tmpPw = req.body.pw;
     const pw = crypto.createHash('sha512').update(tmpPw).digest('base64');
-    db.query('select *from Users where ID = ? and PW = ?' , [id,pw], (err, result) => {
+    db.query('select * from Users where ID = ? and PW = ?' , [id,pw], (err, result) => {
 		if (err) throw err;
         if(result.length === 0){
-              res.json({success : false});
+            res.send('<script type="text/javascript">alert("로그인 실패!(# `)3′)";window.location.href="login";</script>');
         }
         else {
             req.session.user = id;
@@ -32,7 +32,7 @@ router.get('/',(req,res) => {
             req.session.flag = result[0].FLAG;
             req.session.score = result[0].SCORE;
             req.session.save(() => {
-                res.json({success : true});
+                res.redirect('/');
 			})
         }  
     })

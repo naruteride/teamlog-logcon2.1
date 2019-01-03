@@ -24,44 +24,25 @@ router.get('/',(req,res) => {
     const pw = req.body.pw;
     const tmpEmail = req.body.email;
     const tmpSchool = req.body.school;
-    var tmpGrade = req.body.grade;
     const tmpPwd = crypto.createHash('sha512').update(pw).digest('base64');
-    function emailCheck(email){
-        var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-        if (email.match(regExp) != null) 
-            return 1;
-        else 
-            return 0;
-    }
-    if(tmpGrade != 'h' && tmpGrade != 'm'){
-        res.json({success : false});
-    }
-    if(tmpGrade === 'h'){
-        tmpGrade = "고등학생";
-    }
-    if(tmpGrade === 'm'){
-        tmpGrade = "중학생";
-    }
     if(tmpId===''||tmpPwd===''||tmpEmail===''||tmpSchool === ''||tmpGrade === '')
-        res.json({success: false});
+        res.send('<script type="text/javascript">alert("입력되지 않은 값이 있어요!(*•̀ᴗ•́*)");window.location.href="register";</script>');
     if(pw.length<8||pw.length>20||tmpId.length>20||tmpId.length<5)
-        res.json({success:false})
-    if(!((emailCheck(tmpEmail))))
-        res.json({success:false});
+        res.send('<script type="text/javascript">alert("아이디나 패스워드의 길이를 맞춰주세요!(´ヘ｀()");window.location.href="register";</script>');
     else{
         db.query('select SCORE from Users where ID = ?', tmpId, (err, result) => {
 			if(err) console.error(err);
 			if(!(result.length===0))
-                res.json({success: false});
+                res.send('<script type="text/javascript">alert("중복되는 아이디에요!(•⊙ω⊙•)");window.location.href="register";</script>');
             else{
                 db.query('select SCORE from Users where EMAIL = ?',tmpEmail, (error,results) => {
                     if(error) throw error;
                     if(!(results.length===0))
-                        res.json({success: false});
+                        res.send('<script type="text/javascript">alert("중복되는 이메일이에요!( ･ὢ･ )");window.location.href="register";</script>');
                     else{
                         const authkey = randomstring.generate();
                         db.query('insert into Users (ID,PW,EMAIL,SCHOOL,AUTHKEY,GRADE) values (?,?,?,?,?,?)',[tmpId,tmpPwd,tmpEmail,tmpSchool,authkey,tmpGrade]);
-                        res.json({success: true});
+                        res.send('<script type="text/javascript">alert("회원가입 성공!ヾ|๑╹◡╹๑|ﾉ");window.location.href="login";</script>');
                         const transporter = nodemailer.createTransport({
                             service: 'Gmail',
                             auth: {

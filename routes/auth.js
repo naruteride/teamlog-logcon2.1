@@ -21,7 +21,7 @@ router.get('/', (req,res) => {
 })
 .post('/', (req,res) => {
     if(req.session.flag){
-        res.json({success : 'already'})
+        res.redirect('/');
     }
     else{
         const key = req.body.key; 
@@ -34,18 +34,18 @@ router.get('/', (req,res) => {
                     db.query('update Users set FLAG=1 where ID = ?',req.session.user);
                     req.session.flag = 1;
                     req.session.save(() => {
-                        res.json({success : true});
+                        res.redirect('/');
                     })
                 }
                 else
-                    res.json({success:false});
+                    res.send('<script type="text/javascript">alert("인증실패!(ꐦ°д°)");window.location.href="auth";</script>');
             })
         }
         else{
             db.query('select * from Users where EMAIL = ?',req.body.email,(err,result) => {
                 if(err) console.log(err);
                 if(!(result.length === 0))
-                    res.json({success : false});
+                es.send('<script type="text/javascript">alert("중복되는 이메일이에요!(ノ ̿ ̿ᴥ ̿ ̿)ノ");window.location.href="auth";</script>');
                 else{
                     const authkey = randomstring.generate();
                     db.query('update Users set AUTHKEY = ?, EMAIL = ? where ID = ?',[authkey,email,req.session.user]);
