@@ -49,7 +49,7 @@ router.get('/', (req,res) => {
                 else{
                     const authkey = randomstring.generate();
                     db.query('update Users set AUTHKEY = ?, EMAIL = ? where ID = ?',[authkey,email,req.session.user]);
-                    res.json({success: true});
+                    res.send('<script type="text/javascript">alert("인증메일을 다시 보냈어요!(●•̀ ω •́●)");window.location.href="auth";</script>');
                     const transporter = nodemailer.createTransport({
                         service: 'Gmail',
                         auth: {
