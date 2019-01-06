@@ -1,11 +1,31 @@
-onload = function () {
-    let pw = document.querySelector("#Rpassword");
-    let confirmPw = document.querySelector("#confirmPassword");
-    let confirmPwLabel = document.querySelector("#confirmPassword-label");
+let pw;
+let confirmPw;
+let confirmPwLabel;
 
-    let Mpw = document.querySelector("#MRpassword");
-    let MconfirmPw = document.querySelector("#MconfirmPassword");
-    let MconfirmPwLabel = document.querySelector("#MconfirmPassword-label");
+let MLusername;
+let MLpw;
+
+let MRusername;
+let MRpw;
+let MRconfirmPw;
+let MRconfirmPwLabel;
+let MRemail;
+let MRschool;
+
+onload = function () {
+    pw = document.querySelector("#Rpassword");
+    confirmPw = document.querySelector("#confirmPassword");
+    confirmPwLabel = document.querySelector("#confirmPassword-label");
+
+    MLusername = document.querySelector("#MLusername");
+    MLpw = document.querySelector("#MLpassword");
+
+    MRusername = document.querySelector("#MRusername");
+    MRpw = document.querySelector("#MRpassword");
+    MRconfirmPw = document.querySelector("#MconfirmPassword");
+    MRconfirmPwLabel = document.querySelector("#MconfirmPassword-label");
+    MRemail = document.querySelector("#Memail");
+    MRschool = document.querySelector("#Mschool");
 
     confirmPw.addEventListener("focusout", e => {
         if (confirmPw.value == "") {
@@ -45,44 +65,75 @@ onload = function () {
         }
     })
 
-    MconfirmPw.addEventListener("focusout", e => {
-        if (MconfirmPw.value == "") {
-            MconfirmPw.classList.remove("valid");
-            MconfirmPw.classList.remove("invalid");
-        } else if (Mpw.value === MconfirmPw.value) {
-            MconfirmPw.classList.add("valid");
-            MconfirmPw.classList.remove("invalid");
+    MRconfirmPw.addEventListener("focusout", e => {
+        if (MRconfirmPw.value == "") {
+            MRconfirmPw.classList.remove("valid");
+            MRconfirmPw.classList.remove("invalid");
+        } else if (MRpw.value === MRconfirmPw.value) {
+            MRconfirmPw.classList.add("valid");
+            MRconfirmPw.classList.remove("invalid");
         } else {
-            MconfirmPw.classList.add("invalid");
-            MconfirmPw.classList.remove("valid");
-            MconfirmPwLabel.classList.add("label-error");
+            MRconfirmPw.classList.add("invalid");
+            MRconfirmPw.classList.remove("valid");
+            MRconfirmPwLabel.classList.add("label-error");
         }
     })
 
-    Mpw.addEventListener("focusout", e => {
-        if (MconfirmPw.value == "") {
-            MconfirmPw.classList.remove("valid");
-            MconfirmPw.classList.remove("invalid");
-        } else if (Mpw.value === MconfirmPw.value) {
-            MconfirmPw.classList.add("valid");
-            MconfirmPw.classList.remove("invalid");
+    MRpw.addEventListener("focusout", e => {
+        if (MRconfirmPw.value == "") {
+            MRconfirmPw.classList.remove("valid");
+            MRconfirmPw.classList.remove("invalid");
+        } else if (MRpw.value === MRconfirmPw.value) {
+            MRconfirmPw.classList.add("valid");
+            MRconfirmPw.classList.remove("invalid");
         } else {
-            MconfirmPw.classList.add("invalid");
-            MconfirmPw.classList.remove("valid");
-            MconfirmPwLabel.classList.add("label-error");
+            MRconfirmPw.classList.add("invalid");
+            MRconfirmPw.classList.remove("valid");
+            MRconfirmPwLabel.classList.add("label-error");
         }
     })
 
-    MconfirmPw.addEventListener("focus", e => {
-        if (MconfirmPw.classList.contains("invalid")) {
-            MconfirmPw.classList.add("input-error");
-            MconfirmPw.classList.remove("valid");
+    MRconfirmPw.addEventListener("focus", e => {
+        if (MRconfirmPw.classList.contains("invalid")) {
+            MRconfirmPw.classList.add("input-error");
+            MRconfirmPw.classList.remove("valid");
         } else {
-            MconfirmPw.classList.add("valid");
-            MconfirmPw.classList.remove("input-error");
+            MRconfirmPw.classList.add("valid");
+            MRconfirmPw.classList.remove("input-error");
         }
     })
+
+
+    
 };
+
+
+function mobileLoginDisable() {
+    MLusername.disabled = true;
+    MLpw.disabled = true;
+
+    MRusername.disabled = false;
+    MRpw.disabled = false;
+    MRconfirmPw.disabled = false;
+    MRemail.disabled = false;
+    MRschool.disabled = false;
+
+    document.querySelector("#loginAndRegister-submit").textContent = "회원가입";
+}
+
+function mobileRegisterDisable() {
+    MRusername.disabled = true;
+    MRpw.disabled = true;
+    MRconfirmPw.disabled = true;
+    MRemail.disabled = true;
+    MRschool.disabled = true;
+    
+    MLusername.disabled = false;
+    MLpw.disabled = false;
+
+    document.querySelector("#loginAndRegister-submit").textContent = "로그인";
+}
+
 
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.sidenav');
@@ -96,5 +147,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.collapsible');
-    var instances = M.Collapsible.init(elems);
+    var instances = M.Collapsible.init(elems, {
+        onOpenStart : function () {
+            if (MLheader.classList.contains("active")) {
+                mobileLoginDisable();
+            } else if (MRheader.classList.contains("active")) {
+                mobileRegisterDisable();
+            } else {
+            }
+        }
+    });
+
+    var MLheader = document.querySelector("#MLheader");
+    var MRheader = document.querySelector("#MRheader");
 });
