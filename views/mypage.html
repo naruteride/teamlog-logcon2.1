@@ -22,8 +22,6 @@
 
 </head>
 
-<!-- 오우! 이런곳에서 주석을 찾으셨군요?! 개발자도구좀 볼 줄 아는 놈인가?! 로그콘 페이지 곳곳에서는 개발자들의 다양한 비하힌드 스토리를 찾아보실 수 있습니다. 문제를 플다가 조금 지루해진다면 잠깐 보물찾기 하듯이 비하인드 스토리를 찾아보는건 어떨까요? (사실 이것도 부장님 몰래 만든겁니다ㅎ 걸리면 어떻게 될지 몰라요;;) -->
-
 <body>
     <header>
         <nav>
@@ -36,7 +34,7 @@
                         <li><a href="#register" class="modal-trigger">회원가입</a></li>
                     <% } else { %>
                         <li><a href="/mypage"><%= user_id %></a></li>
-                        <li><a href="/mypage">Score : <%= score %></a></li>
+                        <li><a href="/mypage">점수 : <%= score %></a></li>
                     <% } %>
                 </ul>
             </div>
@@ -62,7 +60,27 @@
     </header>
 
     <main>
+        <blockquote class="paragraph-header">
+            기본 정보
+        </blockquote>
+        <div class="paragraph-body">
+            아이디 : <%= user_id %><br>
+            학교 : <%= user_school %><br>
+            점수 : <%= score %><br>
+            한 줄 메모 : <%= comment %>
+        </div>
 
+        <blockquote class="paragraph-header">
+            메모 변경
+        </blockquote>
+        <div class="paragraph-body">
+            <form action="/mypage" method="POST" class="row">
+                <div class="input-field col s12">
+                    <input name="ment" id="comment" type="text" class="validate" value="<%= comment %>">
+                    <label for="comment">한 줄 메모</label>
+                </div>
+            </form>
+        </div>
     </main>
 
 

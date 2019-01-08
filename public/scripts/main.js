@@ -149,11 +149,14 @@ document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.collapsible');
     var instances = M.Collapsible.init(elems, {
         onOpenStart : function () {
-            if (MLheader.classList.contains("active")) {
-                mobileLoginDisable();
-            } else if (MRheader.classList.contains("active")) {
-                mobileRegisterDisable();
-            } else {
+            if (MLheader != null) {
+                if (MLheader.classList.contains("active")) {
+                    mobileLoginDisable();
+                } else if (MRheader.classList.contains("active")) {
+                    mobileRegisterDisable();
+                } else {
+                    
+                }
             }
         }
     });
