@@ -26,7 +26,7 @@
 } */
 
 :root {
-    --point-color: #448AFF;
+    --point-color: #c3262e;
 }
 
 html, body {
@@ -67,7 +67,7 @@ nav .brand-logo {
 
 #logo-cover {
     height: 110px;
-    background-image: url("../images/logos/logo-text.svg");
+    background-image: url("../images/logos/logo-white.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 80%;
@@ -79,7 +79,7 @@ nav .brand-logo {
 }
 
 #menu-icon {
-    background-image: url("../images/bars-light.svg");
+    background-image: url("../images/bars-red.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 70%;
@@ -92,7 +92,7 @@ nav ul a {
 
 
 .submit-button {
-    background-color: #448AFFdd;
+    background-color: #c3262e;
     color: #fff;
 }
 
@@ -143,7 +143,7 @@ main {
 .image_block {
     width: 100%;
     height: 200px;
-    background-image: url("../images/logos/logo-blue.svg");
+    background-image: url("../images/logos/logo-text.svg");
     background-position: 0 center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -196,4 +196,10 @@ main {
         height: 110px;
         line-height: 110px;
     }
+
+    .sidenav {
+        box-shadow: none;
+        background-color: #c3262e;
+    }
+
 }
