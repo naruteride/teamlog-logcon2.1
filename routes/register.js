@@ -5,21 +5,7 @@ const db = require('../db/connection');
 const crypto = require('crypto');
 const router = express.Router();
 
-router.get('/',(req,res) => {
-    if(!(req.session.user === undefined)){
-        res.render('register.ejs',{
-            user_id : req.session.user,
-            user_school : req.session.school
-        });
-    }
-    else{
-        res.render('register.ejs',{
-            user_id : 'guest',
-            user_school : 'undefined'
-        })
-    }
-})
-.post('/',(req,res) => {
+router.post('/',(req,res) => {
     const tmpId = req.body.id;
     const pw = req.body.pw;
     const tmpEmail = req.body.email;

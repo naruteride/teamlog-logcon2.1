@@ -18,7 +18,6 @@ const registerRouter = require('./routes/register');
 const helmet = require('helmet');
 const bodyParser = require('body-parser');
 const logoutRouter = require('./routes/logout');
-const helpRouter = require('./routes/help');
 const client = redis.createClient(6379,'127.0.0.1'); //포트번호와 호스트
 
 app.use(cookieParser());
@@ -45,7 +44,6 @@ app.use('/auth',authRouter);
 app.use('/admin',adminRouter);
 app.use('/register',registerRouter);
 app.use('/logout',logoutRouter);
-app.use('/help',helpRouter);
 app.set('view engine', 'html');
 app.set('view engine', 'ejs');
 
