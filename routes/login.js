@@ -3,21 +3,7 @@ const db = require('../db/connection');
 const crypto = require('crypto');
 const router = express.Router();
 
-router.get('/',(req,res) => {
-    if(!(req.session.user === undefined)){
-        res.render('login.ejs',{
-            user_id : req.session.user,
-            user_school: req.session.school
-        });
-    }
-    else{
-        res.render('login.ejs',{
-            user_id : 'guest',
-            user_school : 'undefined'
-        })
-    }
-})
-.post('/',(req,res)=>{
+router.post('/',(req,res)=>{
     const id = req.body.id;
     var tmpPw = req.body.pw;
     const pw = crypto.createHash('sha512').update(tmpPw).digest('base64');
