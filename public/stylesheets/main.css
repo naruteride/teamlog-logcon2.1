@@ -1,4 +1,4 @@
-@font-face{ 
+/* @font-face{ 
     font-family:'SeoulNamsan';
     src:url('../fonts/SeoulNamsanL.ttf') format('truetype');
     font-weight: normal;
@@ -9,21 +9,21 @@
     src:url('../fonts/SeoulNamsanB.ttf') format('truetype'); 
     font-weight: bold; 
     font-style: normal; 
-}
+} */
 
 /* server */
-/* @font-face{ 
+@font-face{ 
     font-family:'SeoulNamsan';
-    src:url('fonts/SeoulNamsanL.ttf') format('truetype');
+    src:url('/public/fonts/SeoulNamsanL.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 @font-face{ 
     font-family:'SeoulNamsan';
-    src:url('fonts/SeoulNamsanB.ttf') format('truetype'); 
+    src:url('/public/fonts/SeoulNamsanB.ttf') format('truetype'); 
     font-weight: bold; 
     font-style: normal; 
-} */
+}
 
 :root {
     --point-color: #c3262e;
@@ -70,7 +70,7 @@ nav .brand-logo {
 
 #logo-cover {
     height: 110px;
-    background-image: url("../images/logos/logo-white.svg");
+    background-image: url("/public/images/logos/logo-white.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 80%;
@@ -146,7 +146,7 @@ main {
 .image_block {
     width: 100%;
     height: 200px;
-    background-image: url("../images/logos/logcon-text.svg");
+    background-image: url("/public/images/logos/logcon-text.svg");
     background-position: 0 center;
     background-repeat: no-repeat;
     background-size: contain;
