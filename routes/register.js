@@ -10,6 +10,7 @@ router.post('/',(req,res) => {
     const pw = req.body.pw;
     const tmpEmail = req.body.email;
     const tmpSchool = req.body.school;
+    const tmpGrade = req.body.grade;
     const tmpPwd = crypto.createHash('sha512').update(pw).digest('base64');
     if(tmpId===''||tmpPwd===''||tmpEmail===''||tmpSchool === ''||tmpGrade === '')
         res.send('<script type="text/javascript">alert("입력되지 않은 값이 있어요!(*•̀ᴗ•́*)");window.location.href="register";</script>');
