@@ -52,6 +52,9 @@ nav .brand-logo {
     margin: 0 18px;
     color: var(--point-color);
 }
+.sidenav {
+    background-color: var(--point-color);
+}
 .sidenav li > a {
     color: #fff;
     height: 74px;
@@ -92,22 +95,22 @@ nav ul a {
 
 
 .submit-button {
-    background-color: #c3262e;
+    background-color: var(--point-color);
     color: #fff;
 }
 
 
 /* label focus color */
 .input-field input[type=text]:focus + label, .input-field input[type=password]:focus + label {
-    color: var(--point-color) !important;
+    /* color: var(--point-color) !important; */
 }
 /* label underline focus color */
 .input-field input[type=text]:focus, .input-field input[type=password]:focus {
-    border-bottom: 1px solid var(--point-color) !important;
+    /* border-bottom: 1px solid var(--point-color) !important; */
 }
 /* valid color */
 .input-field input[type=text].valid, .input-field input[type=password].valid {
-    border-bottom: 1px solid var(--point-color);
+    /* border-bottom: 1px solid var(--point-color); */
 }
 
 .input-field input[type=password].input-error:focus {
@@ -143,7 +146,7 @@ main {
 .image_block {
     width: 100%;
     height: 200px;
-    background-image: url("../images/logos/logo-text.svg");
+    background-image: url("../images/logos/logcon-text.svg");
     background-position: 0 center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -154,7 +157,7 @@ main {
 }
 
 .notice_block ul {
-    padding-left: unset;
+    padding-left: 3em;
     margin-block-start: 1em;
     margin-block-end: 1em;
     padding-inline-start: 20px;
@@ -183,6 +186,9 @@ main {
     .date_block > h3 {
         font-size: 1.9rem;
     }
+    .notice_block ul {
+        padding-left: 2em;
+    }
 }
 
 @media (max-width: 601px) {
@@ -199,7 +205,7 @@ main {
 
     .sidenav {
         box-shadow: none;
-        background-color: #c3262e;
+        background-color: var(--point-color);
     }
 
 }
