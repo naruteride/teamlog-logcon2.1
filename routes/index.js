@@ -4,7 +4,6 @@ const router = express.Router();
 
 /* GET home page. */
 router.get('/', (req, res) => {
-  console.log(req.session)
   if((req.session.user === undefined)){
     res.render('index.ejs',{
       score : '0',

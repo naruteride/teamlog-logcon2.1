@@ -58,8 +58,15 @@ router.post('/upNotice',(req,res) => {
 
 router.post('/delUser',(req,res) => {
     const user = req.body.user;
-    db.query('delete from Users where ID = ?',user);
-    res.send('<script type="text/javascript">alert("삭제완료!♪(๑ᴖ◡ᴖ๑)♪");window.location.href="/admin";</script>');
+    db.query('delete from Users where ID = ?',user,(err,result) => {
+        if (err) console.log(err);
+        if(!result.affectedRows){
+            res.send("<script type='text/javascript'>alert('삭제실패!');window.location.href='/admin/delUser';</script>");
+        }
+        else{
+            res.send('<script type="text/javascript">alert("삭제완료!♪(๑ᴖ◡ᴖ๑)♪");window.location.href="/admin";</script>');
+        }
+    })
 })
 
 module.exports = router;
