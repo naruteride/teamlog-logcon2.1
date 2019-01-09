@@ -52,6 +52,11 @@ nav .brand-logo {
     margin: 0 18px;
     color: var(--point-color);
 }
+
+.no-hover:hover {
+    background: unset;
+    cursor: default;
+}
 .sidenav {
     background-color: var(--point-color);
 }
