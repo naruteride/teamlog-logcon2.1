@@ -6,7 +6,7 @@ const randomstring = require('randomstring');
 
 router.get('/', (req,res) => {
     if(!(req.session.user === undefined)){
-        if(!(req.session.flag)){
+        if((req.session.flag) === 0){
             res.render('auth.ejs',{
                 id:req.session.user,
                 school : req.session.school
@@ -20,13 +20,12 @@ router.get('/', (req,res) => {
         res.redirect('/');
 })
 .post('/', (req,res) => {
-    if(req.session.flag){
+    if(req.session.flag === 1){
         res.redirect('/');
     }
     else{
         const key = req.body.key; 
         const email = req.body.email;
-        console.log(key,email)
         if(!(req.body.key===undefined)){
             db.query('select AUTHKEY from Users where ID = ?',req.session.user,(err,result) => {
                 if(err) throw err;
@@ -34,7 +33,7 @@ router.get('/', (req,res) => {
                     db.query('update Users set FLAG=1 where ID = ?',req.session.user);
                     req.session.flag = 1;
                     req.session.save(() => {
-                        res.redirect('/');
+                        res.send('<script type="text/javascript">alert("인증성공!(๑′ᴗ‵๑)");window.location.href="/";</script>');
                     })
                 }
                 else
