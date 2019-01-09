@@ -26,11 +26,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
 app.use('/', indexRouter);
-app.use('/rank',rankRouter);
+//app.use('/rank',rankRouter);
 app.use('/mypage',myPageRouter);
-app.use('/notice', noticeRouter);
+//app.use('/notice', noticeRouter);
 app.use('/login',loginRouter);
-app.use('/challenge',challengeRouter);
+//app.use('/challenge',challengeRouter);
 app.use('/auth',authRouter);
 app.use('/admin',adminRouter);
 app.use('/register',registerRouter);
