@@ -35,8 +35,9 @@
                         <li><a href="#login" class="modal-trigger">로그인</a></li>
                         <li><a href="#register" class="modal-trigger">회원가입</a></li>
                     <% } else { %>
-                        <li class="no-hover"><a class="no-hover"><%= user_id %> - <%= score %></a></li>
+                        <li class="no-hover"><a href="" class="no-hover"><%= user_id %> - <%= score %></a></li>
                         <li><a href="/mypage">내 정보</a></li>
+                        <li><a href="/logout">로그아웃</a></li>
                     <% } %>
                 </ul>
             </div>
@@ -46,14 +47,15 @@
             <li><a href="/" id="logo-cover"></a></li>
 
             <li class="waves-effect"><a href="/">대문</a></li>
-            <li class="waves-effect"><a href="/challenge">문제</a></li>
-            <li class="waves-effect"><a href="/notice">공지사항</a></li>
-            <li class="waves-effect"><a href="/rank">순위</a></li>
+            <li class="waves-effect"><a href="#before-starting-modal" class="modal-trigger">문제</a></li>
+            <li class="waves-effect"><a href="#before-starting-modal" class="modal-trigger">공지사항</a></li>
+            <li class="waves-effect"><a href="#before-starting-modal" class="modal-trigger">순위</a></li>
             <li class="waves-effect full hide-on-large-only">
                 <% if (user_school == "undefined") { %>
                     <a href="#loginAndRegister" class="modal-trigger">로그인</a>
                 <% } else { %>
                     <a href="/mypage">내 정보</a>
+                    <a href="/logout">로그아웃</a>
                 <% } %>
             </li>
         </ul>
@@ -249,6 +251,20 @@
                 <a href="#!" class="modal-close waves-effect waves-green btn-flat">뒤로</a>
             </div>
         </form>
+    </div>
+
+    <!-- Modal Structure -->
+    <div id="before-starting-modal" class="modal">
+        <div class="modal-content">
+            <h4>이 페이지는 아직 볼 수 없어요!</h4>
+            <p>
+                해당 페이지는 대회가 시작하고 난 후에 열람하실 수 있습니다.<br><br>
+                빨리 보고싶은 마음은 알겠지만, 대회를 시작할 때 까지 조금 더 참고 기다려 주세요!
+            </p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">확인</a>
+        </div>
     </div>
 </body>
 </html>
