@@ -35,6 +35,7 @@
                     <% } else { %>
                         <li class="no-hover"><a class="no-hover"><%= user_id %> - <%= score %></a></li>
                         <li><a href="/mypage">내 정보</a></li>
+                        <li><a href="/logout">로그아웃</a></li>
                     <% } %>
                 </ul>
             </div>
@@ -52,6 +53,7 @@
                     <a href="#loginAndRegister" class="modal-trigger">로그인</a>
                 <% } else { %>
                     <a href="/mypage">내 정보</a>
+                    <a href="/logout">로그아웃</a>
                 <% } %>
             </li>
         </ul>
