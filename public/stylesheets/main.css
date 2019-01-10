@@ -75,7 +75,7 @@ nav .brand-logo {
 
 #logo-cover {
     height: 110px;
-    background-image: url("images/logos/logo-white.svg");
+    background-image: url("../images/logos/logo-white.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 80%;
@@ -87,7 +87,7 @@ nav .brand-logo {
 }
 
 #menu-icon {
-    background-image: url("images/bars-red.svg");
+    background-image: url("../images/bars-red.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 70%;
@@ -151,7 +151,7 @@ main {
 .image_block {
     width: 100%;
     height: 200px;
-    background-image: url("images/logos/logcon-text.svg");
+    background-image: url("../images/logos/logcon-text.svg");
     background-position: 0 center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -217,7 +217,7 @@ main {
 }
 
 ._404bg {
-    background-image: url("images/404.svg");
+    background-image: url("../images/404.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 160%;
