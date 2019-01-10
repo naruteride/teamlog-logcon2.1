@@ -1,6 +1,6 @@
 const mysql = require('mysql');
 var db_config = {
-    host: 'db.teamlog.kr',
+    host: '192.168.129.1',
     port: 3306,
     user: 'teamlog',
     password: 'xlafhrm',
