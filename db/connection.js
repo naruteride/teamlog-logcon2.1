@@ -6,6 +6,7 @@ var db_config = {
     password: 'xlafhrm',
     database: 'LOGCON'
 };
+
 /*
 var db_config = {
     host: 'localhost',
@@ -15,6 +16,7 @@ var db_config = {
     database: 'LOGCON'
 };
 */
+
 
   var connection;
   
