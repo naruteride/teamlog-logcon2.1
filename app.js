@@ -54,7 +54,7 @@ app.use(function(err, req, res, next) {
   res.render('404.ejs');
 });
 
-app.listen(3000, /*"0.0.0.0",*/ () => {
+app.listen(3000, "0.0.0.0", () => {
   console.log("connect");
 });
 
