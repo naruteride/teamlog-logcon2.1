@@ -44,7 +44,7 @@ router.get('/', (req,res) => {
             db.query('select * from Users where EMAIL = ?',req.body.email,(err,result) => {
                 if(err) console.log(err);
                 if(!(result.length === 0))
-                es.send('<script type="text/javascript">alert("중복되는 이메일이에요!(ノ ̿ ̿ᴥ ̿ ̿)ノ");window.location.href="auth";</script>');
+                res.send('<script type="text/javascript">alert("중복되는 이메일이에요!(ノ ̿ ̿ᴥ ̿ ̿)ノ");window.location.href="auth";</script>');
                 else{
                     const authkey = randomstring.generate();
                     db.query('update Users set AUTHKEY = ?, EMAIL = ? where ID = ?',[authkey,email,req.session.user]);
