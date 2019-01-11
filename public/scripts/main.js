@@ -105,6 +105,13 @@ onload = function () {
 
 
     
+
+
+        
+    var MRheader = document.querySelector("#MRheader");
+    if (MLheader != null) {
+        mobileRegisterDisable();
+    }
 };
 
 
