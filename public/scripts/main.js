@@ -12,6 +12,8 @@ let MRconfirmPwLabel;
 let MRemail;
 let MRschool;
 
+let loginAndRegisterForm;
+
 onload = function () {
     pw = document.querySelector("#Rpassword");
     confirmPw = document.querySelector("#confirmPassword");
@@ -26,6 +28,8 @@ onload = function () {
     MRconfirmPwLabel = document.querySelector("#MconfirmPassword-label");
     MRemail = document.querySelector("#MRemail");
     MRschool = document.querySelector("#Mschool");
+
+    loginAndRegisterForm = document.querySelector("#loginAndRegister-form")
 
     confirmPw.addEventListener("focusout", e => {
         if (confirmPw.value == "") {
@@ -118,7 +122,10 @@ function mobileLoginDisable() {
     MRemail.disabled = false;
     MRschool.disabled = false;
 
+
     document.querySelector("#loginAndRegister-submit").textContent = "회원가입";
+
+    loginAndRegisterForm.action = "/register";
 }
 
 function mobileRegisterDisable() {
@@ -132,6 +139,8 @@ function mobileRegisterDisable() {
     MLpw.disabled = false;
 
     document.querySelector("#loginAndRegister-submit").textContent = "로그인";
+    
+    loginAndRegisterForm.action = "/login";
 }
 
 
