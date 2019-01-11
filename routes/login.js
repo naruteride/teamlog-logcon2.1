@@ -18,6 +18,7 @@ router.post('/',(req,res)=>{
             req.session.score = result[0].SCORE;
             req.session.school = result[0].SCHOOL;
             req.session.save(() => {
+                console.log(id);
                 res.send('<script type="text/javascript">alert("로그인 성공!(｡◝‿◜｡)");window.location.href = "/";</script>');
 			})
         }  
