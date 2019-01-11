@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8" />
+        <title>유저 리스트</title>
+    </head>
+    <body>
+    <% for(var i = 0;i < users.length;i++) { %>
+        <p> <%= i+1 %>. ID : <%= users[i].ID %> COMMENT: <%= users[i].PROFILE_COMMENT %> <%= users[i].GRADE %> <br> </p>
+    <% } %>
+
+    </body>
+</html>
