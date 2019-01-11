@@ -28,7 +28,7 @@ router.post('/',(req,res) => {
     const user = req.session.user;
     db.query('update Users set PROFILE_COMMENT=? where ID = ?',[ment,user]);
     res.send('<script type="text/javascript">alert("수정완료!ヽ(๑╹◡╹๑)ノ");window.location.href = "mypage";</script>');
-    console.log('코멘트 변경' + user);
+    console.log(user +'의코멘트 변경: ' + ment);
 })
 
 module.exports = router;

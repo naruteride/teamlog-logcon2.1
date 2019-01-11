@@ -65,6 +65,7 @@ router.post('/delUser',(req,res) => {
         }
         else{
             res.send('<script type="text/javascript">alert("삭제완료!♪(๑ᴖ◡ᴖ๑)♪");window.location.href="/admin";</script>');
+            console.log(user + '유저삭제');
         }
     })
 })

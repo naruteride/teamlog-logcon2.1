@@ -34,12 +34,12 @@ router.get('/', (req,res) => {
                     req.session.flag = 1;
                     req.session.save(() => {
                         res.send('<script type="text/javascript">alert("인증성공!(๑′ᴗ‵๑)");window.location.href="/";</script>');
-                        console.log('인증성공' + req.session.user);
+                        console.log(req.session.user +'의 인증성공');
                     })
                 }
                 else
                     res.send('<script type="text/javascript">alert("인증실패!(ꐦ°д°)");window.location.href="auth";</script>');
-                    console.log('인증실패' + req.session.user)
+                    console.log(req.session.user + '의 인증실패')
             })
         }
         else{

@@ -11,7 +11,7 @@ router.post('/',(req,res)=>{
 		if (err) throw err;
         if(result.length === 0){
             res.send('<script type="text/javascript">alert("로그인 실패!(# `)3′");window.location.href="/"</script>');
-            console.log('로그인 실패' + id);
+            console.log(id + ' 로그인 실패');
         }
         else {
             req.session.flag = result[0].FLAG;
@@ -19,7 +19,7 @@ router.post('/',(req,res)=>{
             req.session.score = result[0].SCORE;
             req.session.school = result[0].SCHOOL;
             req.session.save(() => {
-                console.log('로그인 성공'+id);
+                console.log(id + ' 로그인 성공');
                 res.send('<script type="text/javascript">alert("로그인 성공!(｡◝‿◜｡)");window.location.href = "/";</script>');
 			})
         }  
