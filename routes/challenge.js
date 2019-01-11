@@ -34,13 +34,17 @@ router.post('/:num',(req,res) => {
                     db.query('update Users set SCORE=? where ID = ?',[result[0].SCORE + req.session.score,user]);
                     db.query('insert into Solved (PID,USER) values (?,?)',[pnum,user]);
                     res.send('<script type="text/javascript">alert("정답!!!٩(๑❛ワ❛๑)و");window.location.href="challenge";</script>');
+                    console.log('문제 품' + user);
                 }
-                else
+                else{
                     res.send('<script type="text/javascript">alert("복습은 아주 좋은거죠 하지만 점수는 없어요ㅎ⁽⁽◝( ˙ ꒳ ˙ )◜⁾⁾";window.location.href="challenge";</script>');
+                    console.log('풀었던 문제 또 품' + user);
+                }
             })
         }
         else{
             res.send('<script type="text/javascript">alert("정답이 아니에요....૮(꒦ິ ˙̫̮ ꒦ິ)ა";window.location.href="challenge";</script>');
+            console.log('문제 틀림' + user);
         }
         
     })
