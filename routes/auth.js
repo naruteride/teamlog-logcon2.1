@@ -66,7 +66,7 @@ router.get('/', (req,res) => {
                         if(err)
                             console.log(err);
                         else{
-                            console.log('sibal',response);
+                            console.log(response);
                         }   
                     })
                 }
