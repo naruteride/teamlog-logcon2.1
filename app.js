@@ -30,7 +30,7 @@ app.use('/rank',rankRouter);
 app.use('/mypage',myPageRouter);
 app.use('/notice', noticeRouter);
 app.use('/login',loginRouter);
-app.use('/challenge',challengeRouter);
+app.use('/challenges',challengeRouter);
 app.use('/auth',authRouter);
 app.use('/tligd',adminRouter);
 app.use('/reigister',registerRouter);
