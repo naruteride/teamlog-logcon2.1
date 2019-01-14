@@ -263,3 +263,34 @@ main {
 .text-center {
     text-align: center;
 }
+
+
+/* 랭킹 */
+
+.ranking_top{
+    font-size: 275%;
+    
+}
+.ranking_second{
+    font-size: 250%;
+}
+.ranking_third{
+    font-size : 225%;
+}
+.ranking_item{
+    font-size : 200%;
+}
+.ranking_pts{
+    font-size: 60%;
+    color : rgba(0, 0, 0, 0.5)
+}
+.ranking_number{
+    font-size: 150%;
+    color: #c3262e;
+   
+}
+
+.rank_small{
+    font-size : 50%;
+    color : rgba(0, 0, 0, 7)
+}
