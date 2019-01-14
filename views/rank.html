@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>LOGCON</title>
+
+    <!-- Compiled and minified -->
+    <link rel="stylesheet" href="https://cdn.shopify.com/s/files/1/1775/8583/t/1/assets/admin-materialize.min.css?2711767630378816724">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <!-- Local -->
+    <link rel="shortcut icon" href="../public/images/logos/logcon-logo-24.png">
+    <link rel="stylesheet" href="../public/stylesheets/main.css">
+    <script src="../public/scripts/main.js"></script>
+
+    <!-- Localhost -->
+    <link rel="shortcut icon" href="images/logos/logcon-logo-24.png">
+    <link rel="stylesheet" href="stylesheets/main.css">
+    <script src="scripts/main.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#" data-target="slide-out" class="sidenav-trigger waves-effect"><i id="menu-icon" class="material-icons full hide-on-large-only">  </i></a>
+                <a href="#" class="brand-logo">순위</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <!-- <% if (user_school == "undefined") { %> -->
+                        <li><a href="#login" class="modal-trigger">로그인</a></li>
+                        <li><a href="#register" class="modal-trigger">회원가입</a></li>
+                    <!-- <% } else { %>
+                        <li class="no-hover"><a class="no-hover"><%= user_id %> - <%= score %></a></li>
+                        <li><a href="/mypage">내 정보</a></li>
+                    <% } %> -->
+                </ul>
+            </div>
+        </nav>
+
+        <ul id="slide-out" class="sidenav sidenav-fixed">
+            <li><a href="/" id="logo-cover"></a></li>
+
+            <li class="waves-effect"><a href="/">대문</a></li>
+            <li class="waves-effect"><a href="/challenges">문제</a></li>
+            <li class="waves-effect"><a href="/notice">공지사항</a></li>
+            <li class="waves-effect"><a href="/rank">순위</a></li>
+            <li class="waves-effect full hide-on-large-only">
+                <!-- <% if (user_school == "undefined") { %> -->
+                    <a href="#loginAndRegister" class="modal-trigger">로그인</a>
+                <!-- <% } else { %>
+                    <a href="/mypage">내 정보</a>
+                <% } %> -->
+            </li>
+        </ul>
+
+    </header>
+
+    <main>
+        
+        
+    </main>
+
+    <footer>
+
+    </footer>
+
+    <!-- Modal Structure -->
+    <div id="login" class="modal">
+        <form action="/login" method="POST">
+            <div class="modal-content">
+                <h4>로그인</h4>
+            
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input name="id" placeholder="guchiman12" id="Lusername" type="text" class="validate" minlength="5" maxlength="20" required>
+                        <label for="Lusername">User Name</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input name="pw" placeholder="•••••••••••••••••••" id="Lpassword" type="password" class="validate" minlength="8" maxlength="20" required>
+                        <label for="Lpassword">Password</label>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="waves-effect btn-flat submit-button">로그인</button>
+                <a href="#!" class="modal-close waves-effect btn-flat">뒤로</a>
+            </div>
+        </form>
+    </div>
+
+    <!-- Modal Structure -->
+    <div id="register" class="modal">
+        <form action="/register" method="POST">
+            <div class="modal-content">
+                <h4>회원가입</h4>
+            
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input name="id" placeholder="guchiman12" id="Rusername" type="text" class="validate" minlength="5" maxlength="20" required>
+                        <label for="Rusername">User Name</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input name="pw" placeholder="jung5hak2seng7chan!" id="Rpassword" type="password" class="validate" minlength="8" maxlength="20" required>
+                        <label for="Rpassword">Password</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input placeholder="•••••••••••••••••••" id="confirmPassword" type="password" class="validate" minlength="8" maxlength="20" required>
+                        <label id="confirmPassword-label" for="confirmPassword">Confirm Password</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input name="email" placeholder="IiLeohGeLaDo66" id="email" type="text" class="validate" required>
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <select name="domain">
+                            <option value="@gmail.com" selected>@gmail.com</option>
+                            <option value="@naver.com">@naver.com</option>
+                            <option value="@daum.net">@daum.net</option>
+                        </select>
+                        <label>Select Domain</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input name="school" placeholder="오류중학교" id="school" type="text" class="validate" pattern="^[가-힣]*$" title="한글로 띄어쓰기 없이 입력. ex)오류중학교" required>
+                        <label for="school">school</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label>
+                        <input name="grade" value="중학생" type="radio" checked />
+                        <span>중학생</span>
+                    </label>
+                     &nbsp; &nbsp; &nbsp; 
+                    <label>
+                        <input name="grade" value="고등학생" type="radio" />
+                        <span>고등학생</span>
+                    </label>
+                </div>
+                
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="waves-effect btn-flat submit-button">회원가입</button>
+                <a href="#!" class="modal-close waves-effect btn-flat">뒤로</a>
+            </div>
+        </form>
+    </div>
+
+    <!-- Modal Structure -->
+    <div id="loginAndRegister" class="modal modal-fixed-footer">
+        <form id="loginAndRegister-form" action="/login" method="POST">
+            <div class="modal-content">
+                <h4>로그인/회원가입</h4>
+                <ul class="collapsible">
+                    <li id="MLheader" class="active">
+                        <div class="collapsible-header">로그인</div>
+                        <div class="collapsible-body">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input name="id" placeholder="guchiman12" id="MLusername" type="text" class="validate" minlength="5" maxlength="20" required>
+                                    <label for="MLusername">User Name</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input name="pw" placeholder="•••••••••••••••••••" id="MLpassword" type="password" class="validate" minlength="8" maxlength="20" required>
+                                    <label for="MLpassword">Password</label>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+
+                    <li id="MRheader">
+                        <div class="collapsible-header">회원가입</div>
+                        <div class="collapsible-body">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input name="id" placeholder="guchiman12" id="MRusername" type="text" class="validate" minlength="5" maxlength="20" required disabled>
+                                    <label for="MRusername">User Name</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input name="pw" placeholder="jung5hak2seng7chan!" id="MRpassword" type="password" class="validate" minlength="8" maxlength="20" required disabled>
+                                    <label for="MRpassword">Password</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input placeholder="•••••••••••••••••••" id="MconfirmPassword" type="password" class="validate" minlength="8" maxlength="20" required disabled>
+                                    <label id="MconfirmPassword-label" for="MconfirmPassword">Confirm Password</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input name="email" placeholder="IiLeohGeLaDo66" id="MRemail" type="text" class="validate" required>
+                                    <label for="email">Email</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <select name="domain">
+                                        <option value="@gmail.com" selected>@gmail.com</option>
+                                        <option value="@naver.com">@naver.com</option>
+                                        <option value="@daum.net">@daum.net</option>
+                                    </select>
+                                    <label>Select Domain</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input name="school" placeholder="오류중학교" id="Mschool" type="text" class="validate" pattern="^[가-힣]*$" title="한글로 띄어쓰기 없이 입력. ex)오류중학교" required disabled>
+                                    <label for="Mschool">school</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <label>
+                                    <input name="grade" value="중학생" type="radio" checked />
+                                    <span>중학생</span>
+                                </label>
+                                 &nbsp; &nbsp; &nbsp; 
+                                <label>
+                                    <input name="grade" value="고등학생" type="radio" />
+                                    <span>고등학생</span>
+                                </label>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="modal-footer">
+                <button type="submit" id="loginAndRegister-submit" class="waves-effect btn-flat submit-button">로그인</button>
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">뒤로</a>
+            </div>
+        </form>
+    </div>
+</body>
