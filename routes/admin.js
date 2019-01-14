@@ -61,12 +61,26 @@ router.post('/delUser',(req,res) => {
     db.query('delete from Users where ID = ?',user,(err,result) => {
         if (err) console.log(err);
         if(!result.affectedRows){
-            res.send("<script type='text/javascript'>alert('삭제실패!');window.location.href='/admin/delUser';</script>");
+            res.send("<script type='text/javascript'>alert('존재하지 않는 유저입니다.');window.location.href='/admin/delUser';</script>");
         }
         else{
             res.send('<script type="text/javascript">alert("삭제완료!♪(๑ᴖ◡ᴖ๑)♪");window.location.href="/admin";</script>');
+            console.log(user + '의 계정삭제');
         }
     })
+})
+
+router.get('/userList',(req,res) => {
+    if(!(req.session.user === 'admin'))
+        res.send('<script type="text/javascript">alert("관리자가 아니시군요?٩(๑`ȏ´๑)۶");window.location.href="/";</script>');
+    else{
+            db.query('select ID,PROFILE_COMMENT,GRADE from Users',(err,result) => {
+            if(err) console.log(err);
+            res.render('userList.ejs',{
+                users : result
+            })
+        })
+    }
 })
 
 module.exports = router;
