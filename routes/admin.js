@@ -38,8 +38,9 @@ router.post('/insertP',(req,res) => {
     const answer = req.body.answer;
     const score = req.body.score;
     const file = req.body.file;
+    const pType = req.body.pType;
     if(file === ''){
-        db.query('insert into Problems (TITLE,CONTENTS,ANSWER,SCORE) values(?,?,?,?)',[title,content,answer,score]);
+        db.query('insert into Problems (TITLE,CONTENTS,ANSWER,SCORE,PTYPE) values(?,?,?,?,?)',[title,content,answer,score,pType]);
         res.send('<script type="text/javascript">alert("추가완료!♪(๑ᴖ◡ᴖ๑)♪");window.location.href="/admin/insertP";</script>');
     }
     else{

@@ -51,7 +51,7 @@ router.post('/:num',(req,res) => {
 })
 
 router.get('/',(req,res) => {
-    db.query('select TITLE,SCORE from Problems',(err,result) => {
+    db.query('select TITLE,SCORE,PTYPE from Problems',(err,result) => {
         if(err) throw err;
         if(!(req.session.user === undefined)){
             if(!(req.session.flag))
