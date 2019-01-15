@@ -267,8 +267,18 @@ main {
 
 /* 랭킹 */
 
+div:nth-child(2n){
+   background-color : gray;
+}
+.ranking{
+    
+    
+}
 .ranking_top{
     font-size: 275%;
+    padding-right: 20%;
+    border-bottom : 1px solid var(--point-color);
+    
     
 }
 .ranking_second{
