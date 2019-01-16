@@ -10,17 +10,15 @@ router.get('/', (req, res) => {
       user_school: 'undefined'
     });
   }
-  else{
-    if(!(req.session.flag))
+  else if(!(req.session.flag) && !(req.session.user !== undefined))
         res.redirect('/auth');
-    else{
-        res.render('index.ejs',{
-          score : req.session.score,
-          user_id : req.session.user,
-          user_school: req.session.school
-        })
-      }
-  }
+  else{
+      res.render('index.ejs',{
+        score : req.session.score,
+        user_id : req.session.user,
+        user_school: req.session.school
+      })
+    }
 });
 
 module.exports = router;

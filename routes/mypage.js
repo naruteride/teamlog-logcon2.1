@@ -3,23 +3,20 @@ const db = require('../db/connection');
 const router = express.Router();
 
 router.get('/',(req,res) => {
-    if((req.session.user === undefined)){
+    if((req.session.user === undefined))
         res.redirect('/');
-    }
-    else{
-        if(!(req.session.flag))
+    else if(!(req.session.flag) && !(req.session.user !== undefined))
             res.redirect('/auth');
-        else{
-            db.query('select * from Users where ID = ?', req.session.user, (err,result) => {
-                if (err) throw err;
-                res.render('mypage.ejs',{
-                    user_id : result[0].ID,
-                    user_school : result[0].SCHOOL,
-                    score : result[0].SCORE,
-                    comment : result[0].PROFILE_COMMENT
-                })
+    else{
+        db.query('select * from Users where ID = ?', req.session.user, (err,result) => {
+            if (err) throw err;
+            res.render('mypage.ejs',{
+                user_id : result[0].ID,
+                user_school : result[0].SCHOOL,
+                score : result[0].SCORE,
+                comment : result[0].PROFILE_COMMENT
             })
-        }
+        })
     }
 })
 
