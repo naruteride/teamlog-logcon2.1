@@ -41,11 +41,11 @@ router.post('/insertP',(req,res) => {
     const pType = req.body.pType;
     if(file === ''){
         db.query('insert into Problems (TITLE,CONTENTS,ANSWER,SCORE,PTYPE) values(?,?,?,?,?)',[title,content,answer,score,pType]);
-        res.send('<script type="text/javascript">alert("추가완료!♪(๑ᴖ◡ᴖ๑)♪");window.location.href="/admin/insertP";</script>');
+        res.send('<script type="text/javascript">alert("추가완료!♪(๑ᴖ◡ᴖ๑)♪");window.location.href="/tligd/insertP";</script>');
     }
     else{
         db.query('insert into Problems (TITLE,CONTENTS,ANSWER,SCORE,FILE_PATH) values(?,?,?,?,?)',[title,content,answer,score,file]);
-        res.send('<script type="text/javascript">alert("추가완료!♪(๑ᴖ◡ᴖ๑)♪");window.location.href="/admin/insertP";</script>');
+        res.send('<script type="text/javascript">alert("추가완료!♪(๑ᴖ◡ᴖ๑)♪");window.location.href="/tligd/insertP";</script>');
     }
 })
 
@@ -54,7 +54,7 @@ router.post('/upNotice',(req,res) => {
     const content = req.body.content;
     const time = moment().format('MMMM Do YYYY, h:mm:ss a');
     db.query('insert into Notice (TITLE,CONTENTS,TIME) values(?,?,?)',[title,content,time]);
-    res.send('<script type="text/javascript">alert("추가완료!♪(๑ᴖ◡ᴖ๑)♪");window.location.href="/admin";</script>');
+    res.send('<script type="text/javascript">alert("추가완료!♪(๑ᴖ◡ᴖ๑)♪");window.location.href="/tligd";</script>');
 })
 
 router.post('/delUser',(req,res) => {
@@ -62,10 +62,10 @@ router.post('/delUser',(req,res) => {
     db.query('delete from Users where ID = ?',user,(err,result) => {
         if (err) console.log(err);
         if(!result.affectedRows){
-            res.send("<script type='text/javascript'>alert('존재하지 않는 유저입니다.');window.location.href='/admin/delUser';</script>");
+            res.send("<script type='text/javascript'>alert('존재하지 않는 유저입니다.');window.location.href='/tligd/delUser';</script>");
         }
         else{
-            res.send('<script type="text/javascript">alert("삭제완료!♪(๑ᴖ◡ᴖ๑)♪");window.location.href="/admin";</script>');
+            res.send('<script type="text/javascript">alert("삭제완료!♪(๑ᴖ◡ᴖ๑)♪");window.location.href="/tligd";</script>');
             console.log(user + '의 계정삭제');
         }
     })
