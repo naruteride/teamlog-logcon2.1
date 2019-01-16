@@ -275,3 +275,63 @@ main {
 .text-center {
     text-align: center;
 }
+
+
+/* 랭킹 */
+
+.ranking_item:nth-child(2n){
+    background-color : #eee;
+}
+.ranking{
+    
+    /* width: 800px; */
+}
+.ranking_top{
+    
+    font-size: 275%;
+    padding-right: 20%;
+    
+    
+    
+}
+.ranking_second{
+    font-size: 250%;
+    background-color : #eee;
+}
+.ranking_third{
+    font-size : 225%;
+    
+}
+.ranking_item{
+    font-size : 200%;
+    
+}
+.ranking_pts{
+    font-size: 60%;
+    color : rgba(0, 0, 0, 0.5)
+}
+.ranking_number{
+    font-size: 150%;
+    color: #c3262e;
+   
+}
+.ranking_number_first{
+    color:#FFE641;
+    font-size: 150%;
+    text-shadow: 1px 2px 1px #FFD732;
+}
+.ranking_number_second{
+    color:#fff;
+    font-size: 150%;
+    text-shadow: 1px 2px 1px #787878;
+}
+.ranking_number_third{
+    color:#9F814F;
+    font-size: 150%;
+    text-shadow: 1px 2px 1px #957745;
+}
+
+.rank_small{
+    font-size : 50%;
+    color : rgba(0, 0, 0, 7)
+}
