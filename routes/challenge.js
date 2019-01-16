@@ -37,13 +37,13 @@ router.post('/:num',(req,res) => {
                     console.log(user + ' 문제 품' + pnum +'번 문제 답: ' + ans);
                 }
                 else{
-                    res.send('<script type="text/javascript">alert("복습은 아주 좋은거죠 하지만 점수는 없어요ㅎ⁽⁽◝( ˙ ꒳ ˙ )◜⁾⁾";window.location.href="challenge";</script>');
+                    res.send('<script type="text/javascript">alert("복습은 아주 좋은거죠 하지만 점수는 없어요ㅎ⁽⁽◝( ˙ ꒳ ˙ )◜⁾⁾");window.location.href="challenge";</script>');
                     console.log(user + ' 풀었던 문제 또 품');
                 }
             })
         }
         else{
-            res.send('<script type="text/javascript">alert("정답이 아니에요....૮(꒦ິ ˙̫̮ ꒦ິ)ა";window.location.href="challenge";</script>');
+            res.send('<script type="text/javascript">alert("정답이 아니에요....૮(꒦ິ ˙̫̮ ꒦ິ)ა");window.location.href="challenge";</script>');
             console.log(user + ' 문제 틀림');
         }
         

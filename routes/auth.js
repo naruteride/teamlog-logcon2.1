@@ -5,16 +5,11 @@ const router = express.Router();
 const randomstring = require('randomstring');
 
 router.get('/', (req,res) => {
-    if(!(req.session.user === undefined)){
-        if((req.session.flag) === 0){
-            res.render('auth.ejs',{
-                id:req.session.user,
-                school : req.session.school
-            });
-        }
-        else{
-            res.redirect('/');
-        }
+    if(!(req.session.user === undefined) && req.session.flag === 0){
+                res.render('auth.ejs',{
+            id:req.session.user,
+            school : req.session.school
+        });
     }
     else
         res.redirect('/');
