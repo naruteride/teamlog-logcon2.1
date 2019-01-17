@@ -344,3 +344,39 @@ main {
     font-size : 50%;
     color : rgba(0, 0, 0, 7)
 }
+
+/*notice*/
+
+
+.notice_box{
+    font-size: 150%;
+    padding: 1em calc(2em + 25px) 1em 1em;
+    margin: 1em 0;
+    background: #eee;
+    display: table;
+    border-left: 5px solid var(--point-color);
+    background-position: calc(100% - 10px) 10px;
+    background-size: 25px;
+    margin-top : 30px;
+    box-sizing: unset;
+    line-height: 200%;
+
+}
+.notice_fix {
+    border-color:#FA7268;
+    box-shadow: 0 1px 5px #FA726877;
+    
+}
+.gray_bg{
+    background-color: #fff;
+    border-left: 5px solid #787878;
+    border-radius: 4px;
+    padding: 0.3pc 0.8pc;
+    padding-left: 1pc;
+    padding-right: 1pc;
+    /* font-style: ; */
+    font-family: sans-serif;
+}
+.notice_title{
+    color:#000;
+}
