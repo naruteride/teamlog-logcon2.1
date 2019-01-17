@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
       user_school: 'undefined'
     });
   }
-  else if(!(req.session.flag) && !(req.session.user !== undefined))
+  else if(!(req.session.flag) && (req.session.user !== undefined))
         res.redirect('/auth');
   else{
       res.render('index.ejs',{
