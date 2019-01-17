@@ -12,7 +12,9 @@ router.get('/',(req,res) => {
                 res.redirect('/auth');
             else{
                 res.render('rank.ejs',{
-                    users : result
+                    users : result,
+                    user_id : req.session.user,
+                    user_school : req.session.school
                 })
                //res.sendFile(path.join(__dirname,'../views', 'rank.html'));
             }
