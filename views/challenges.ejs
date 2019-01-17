@@ -68,7 +68,7 @@
             <% for (var i = 0; i < info.length; i++) { %>
                 <div class="col s12 m3">
                     <div class="card">
-                        <% switch (info[i].PTYPE) { %>
+                        <!-- <% switch (info[i].PTYPE) { %>
                             <% case "network": %>
                                 <div class="card-content lighten-5 red problem-type PT-network"></div>
                                 <% break; %>
@@ -80,7 +80,17 @@
                                 <% break; %>
                             <% default : %>
                                 <div class="card-content lighten-5 red problem-type PT-network"></div>
+                        <% } %> -->
+                        <% if (info[i].PTYPE == "network") { %>
+                            <div class="card-content lighten-5 red problem-type PT-network"></div>
+                        <% } else if (info[i].PTYPE == "server") { %>
+                            <div class="card-content lighten-5 red problem-type PT-server"></div>
+                        <% } else if (info[i].PTYPE == "web") { %>
+                            <div class="card-content lighten-5 red problem-type PT-web"></div>
+                        <% } else { %>
+                            <div class="card-content lighten-5 red problem-type PT-network"></div>
                         <% } %>
+                        
                         <div class="card-content">
                             <p><%= info[i].TITLE %></p>
                         </div>
