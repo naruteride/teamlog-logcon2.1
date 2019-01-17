@@ -14,7 +14,8 @@ router.get('/:num',(req,res) => {
                     info : result,
                     user_id : req.session.user,
                     user_school: req.session.school,
-                    pid : pnum 
+                    pid : pnum,
+                    score : req.session.score
                  })
             })
         }
@@ -61,6 +62,7 @@ router.get('/',(req,res) => {
                     info : result,
                     user_id : req.session.user,
                     user_school: req.session.school,
+                    score : req.session.score
                 })
             }
         }
