@@ -15,13 +15,13 @@ router.get('/:num',(req,res) => {
                     user_id : req.session.user,
                     user_school: req.session.school,
                     pid : pnum 
-                 })
-            })
+                 });
+            });
         }
     }
     else
         res.redirect('/');
-})
+});
 router.post('/:num',(req,res) => {
     const user = req.session.user;
     const ans = req.body.answer;
@@ -40,15 +40,14 @@ router.post('/:num',(req,res) => {
                     res.send('<script type="text/javascript">alert("복습은 아주 좋은거죠 하지만 점수는 없어요ㅎ⁽⁽◝( ˙ ꒳ ˙ )◜⁾⁾");window.location.href="challenges";</script>');
                     console.log(user + ' 풀었던 문제 또 품');
                 }
-            })
+            });
         }
         else{
             res.send('<script type="text/javascript">alert("정답이 아니에요....૮(꒦ິ ˙̫̮ ꒦ິ)ა");window.location.href="challenges";</script>');
             console.log(user + ' 문제 틀림');
-        }
-        
-    })
-})
+        }  
+    });
+});
 
 router.get('/',(req,res) => {
     db.query('select TITLE,SCORE,PTYPE from Problems',(err,result) => {
@@ -61,12 +60,12 @@ router.get('/',(req,res) => {
                     info : result,
                     user_id : req.session.user,
                     user_school: req.session.school,
-                })
+                });
             }
         }
         else
             res.redirect('/');
-    })
-})
+    });
+});
 
 module.exports = router;

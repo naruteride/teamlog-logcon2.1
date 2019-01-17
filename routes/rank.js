@@ -16,7 +16,7 @@ router.get('/',(req,res) => {
                     user_school : result[0].SCHOOL,
                     score : result[0].SCORE,
                     users : result
-                })
+                });
             }
         }
         else{
@@ -25,9 +25,9 @@ router.get('/',(req,res) => {
                 user_id : 'guest',
                 user_school : 'undefined',
                 score : 0
-            })
+            });
         }
-    })
+    });
 })
 
 module.exports = router;
