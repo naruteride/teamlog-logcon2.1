@@ -79,12 +79,12 @@
                         <% } %>
                         
                         <div class="card-content">
-                            <p><%= info[i].TITLE %></p>
+                            <p><a href="/challenge/<%= i + 1 %>"><%= info[i].TITLE %></a></p>
                         </div>
                         <div class="card-tabs">
                             <ul class="tabs tabs-fixed-width tabs-transparent">
                                 <li class="tab red">
-                                    <a><%= info[i].SCORE %></a>
+                                    <%= info[i].SCORE %>
                                 </li>
                             </ul>
                         </div>
