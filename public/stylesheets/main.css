@@ -380,3 +380,26 @@ main {
 .notice_title{
     color:#000;
 }
+/* challenge */
+
+.problem {
+    width : 800px;
+}
+.problem_title{
+    font-size:300%;
+}
+.problem_content
+{
+    font-size:200%;
+    line-height: 180%;
+}
+.problem_link{
+    font-size: 200%;
+}
+.flag-form-cover {
+    width: calc(100% - 100px);
+}
+.flex {
+    display: flex;
+    align-items: center;
+}
