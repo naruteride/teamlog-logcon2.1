@@ -3,7 +3,7 @@ const db = require('../db/connection');
 const router = express.Router();
 
 router.get('/',(req,res) => {
-    db.query('select SCORE,SCHOOL,ID,PROFILE_COMMENT from Users', (err,result) => {
+    db.query('select SCORE,SCHOOL,ID,PROFILE_COMMENT from Users ORDER BY SCORE DESC', (err,result) => {
         if (err) throw err;
         if(!(req.session.user === undefined)){
             if(!(req.session.flag))

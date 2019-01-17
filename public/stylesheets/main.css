@@ -215,6 +215,27 @@ main {
     font-family: Courier, "SeoulNamsan";
 }
 
+
+.tab > a {
+    /* color: rgba(68,138,255,0.7) !important; */
+}
+
+.problem-type {
+    background-position: 24px center;
+    background-repeat: no-repeat;
+    background-size: 25px;
+}
+
+.PT-network {
+    background-image: url("../images/network.svg");
+}
+.PT-server {
+    background-image: url("../images/server.svg");
+}
+.PT-web {
+    background-image: url("../images/web.svg");
+}
+
 @media (max-width: 992px) {
     .nav-wrapper {
         padding-left: 0;

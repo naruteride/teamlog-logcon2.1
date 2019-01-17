@@ -63,7 +63,62 @@
     </header>
 
     <main>
-        
+        <div class="row">
+
+            <% for (var i = 0; i < info.length; i++) { %>
+                <div class="col s12 m3">
+                    <div class="card">
+                        <% switch (info[i].pType) { %>
+                            <% case "network": %>
+                                <div class="card-content lighten-5 red problem-type PT-network">
+                                </div>
+                                <% break; %>
+                            <% case "server": %>
+                                <div class="card-content lighten-5 red problem-type PT-server">
+                                </div>
+                                <% break; %>
+                            <% case "web": %>
+                                <div class="card-content lighten-5 red problem-type PT-web">
+                                </div>
+                                <% break; %>
+                            <% default : %>
+                                <div class="card-content lighten-5 red problem-type PT-network">
+                                </div>
+                        <% } %>
+                        <div class="card-content">
+                            <p><%= info[i].TITLE %></p>
+                        </div>
+                        <div class="card-tabs">
+                            <ul class="tabs tabs-fixed-width tabs-transparent">
+                                <li class="tab red">
+                                    <a><%= info[i].SCORE %></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+
+            
+            <div class="col s12 m3">
+                <div class="card">
+                    <div class="card-content lighten-5 red problem-type">
+                        <div id="test2" class="active"></div>
+                    </div>
+                    <div class="card-content">
+                        <p><a href="challenge/<%= i + 1 %>">질뻐기의 타입은?</a></p>
+                    </div>
+                    <div class="card-tabs">
+                        <ul class="tabs tabs-fixed-width tabs-transparent">
+                            <li class="tab red">
+                                <a>350</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
     </main>
 
     <footer>
