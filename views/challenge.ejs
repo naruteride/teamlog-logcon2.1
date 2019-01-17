@@ -20,6 +20,10 @@
     <link rel="stylesheet" href="stylesheets/main.css">
     <script src="scripts/main.js"></script>
 
+    <script>
+        let pid = <%= pid %>;
+    </script>
+
 </head>
 
 <body>
@@ -27,17 +31,17 @@
         <nav>
             <div class="nav-wrapper">
                 <a href="#" data-target="slide-out" class="sidenav-trigger waves-effect"><i id="menu-icon" class="material-icons full hide-on-large-only">  </i></a>
-                <a href="#" class="brand-logo">문제</a>
+                <a href="#" class="brand-logo">문제 내용</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <!-- 주석 해제 -->
-                    <!-- <% if (user_school == "undefined") { %>
+                    <% if (user_school == "undefined") { %>
                         <li><a href="#login" class="modal-trigger">로그인</a></li>
                         <li><a href="#register" class="modal-trigger">회원가입</a></li>
-                    <% } else { %> -->
+                    <% } else { %>
                         <li class="no-hover"><a class="no-hover"><%= user_id %> - <%= score %></a></li>
                         <li><a href="/mypage">내 정보</a></li>
                         <li><a href="/logout">로그아웃</a></li>
-                    <!-- <% } %> -->
+                    <% } %>
                 </ul>
             </div>
         </nav>
@@ -64,6 +68,42 @@
     <!--아니 제가 카레를 진짜 못 먹는데 부모님이 저만빼고 외식하러 가신대요. 스프커리 먹으러 간다고 하시면서 먹고싶으면 너도 오라고 하심 ㅎ 카레 싫어하는거 알면서-->
     <main>
         <div class="problem">
+            
+            <span class="problem_title">
+                문제명 : <%= info[0].TITLE %>
+            </span>
+            <%= info[0].SCORE %>
+            <br>
+            <hr>
+            <br>
+            
+            <span class="problem_content">
+                <%= info[0].CONTENTS %>
+            </span>
+                <br>
+                
+                <br>
+
+            <% if (info[0].FILE_PATH != "false") { %>
+                <a href="<%= info[0].FILE_PATH %>" download="<%= info[0].TITLE %>">파일 다운로드 링크</a>
+                <br>
+            <% } %>
+            <br>
+            <br>
+            <div class="row">
+                <form action="/challenge/<%= pid - 1 %>" method="POST" class="col s12">
+                    <div class="row flex">
+                        <div class="input-field col s11">
+                            <input name="answer" id="flag" type="text" class="validate">
+                            <label for="flag">flag</label>
+                        </div>
+                        <button class="btn waves-effect waves-light right col s1" type="submit" name="action">제출</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <!-- <div class="problem">
             
             <span class="problem_title">
                 문제명 : αQμα Σαη
@@ -101,7 +141,7 @@
                     </div>
                 </form>
             </div>
-        </div>
+        </div> -->
         
 
 
