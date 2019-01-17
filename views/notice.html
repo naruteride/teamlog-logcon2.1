@@ -29,15 +29,14 @@
                 <a href="#" data-target="slide-out" class="sidenav-trigger waves-effect"><i id="menu-icon" class="material-icons full hide-on-large-only">  </i></a>
                 <a href="#" class="brand-logo">공지사항</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <!-- 주석 해제 -->
-                    <!-- <% if (user_school == "undefined") { %>
+                    <% if (user_school == "undefined") { %>
                         <li><a href="#login" class="modal-trigger">로그인</a></li>
                         <li><a href="#register" class="modal-trigger">회원가입</a></li>
-                    <% } else { %> -->
+                    <% } else { %>
                         <li class="no-hover"><a class="no-hover"><%= user_id %> - <%= score %></a></li>
                         <li><a href="/mypage">내 정보</a></li>
                         <li><a href="/logout">로그아웃</a></li>
-                    <!-- <% } %> -->
+                    <% } %>
                 </ul>
             </div>
         </nav>
@@ -73,8 +72,9 @@
             </ul>
         </div>
 
+        <!-- <% for (int i = 0; ) %> -->
 
-        <div class="notice_box">
+        <!-- <div class="notice_box">
             <h5 class="notice_title">제목 : 패치노트 10.9.1</h5>
             <ul>
                 <li>서버전공 - 서버 전공의 실력 2 증가합니다. 문제검수 능력 3증가합니다.</li>
@@ -92,7 +92,7 @@
                 <li>흑인이 놀라면? 설마 깜놀이라고 생각하셨나요? 당신의 썩은 생각이 세상을 망치고 있습니다. 흑인이 놀라면 일을 다 끝마쳐야 합니다.</li>
             </ul>
             <h6><i>2019.1.19 09:00</i></h6>
-        </div>
+        </div> -->
         
 
     </main>
