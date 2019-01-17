@@ -1,5 +1,5 @@
 const mysql = require('mysql');
-/*
+
 var db_config = {
     host: '192.168.129.1',
     port: 3306,
@@ -7,8 +7,8 @@ var db_config = {
     password: 'xlafhrm',
     database: 'LOGCON'
 };
-*/
 
+/*
 var db_config = {
     host: 'localhost',
     port: 3306,
@@ -16,7 +16,7 @@ var db_config = {
     password: '',
     database: 'LOGCON'
 };
-
+*/
 
 
   var connection;
