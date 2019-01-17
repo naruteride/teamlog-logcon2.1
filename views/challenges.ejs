@@ -30,14 +30,14 @@
                 <a href="#" class="brand-logo">문제</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <!-- 주석 해제 -->
-                    <!-- <% if (user_school == "undefined") { %>
+                    <% if (user_school == "undefined") { %>
                         <li><a href="#login" class="modal-trigger">로그인</a></li>
                         <li><a href="#register" class="modal-trigger">회원가입</a></li>
-                    <% } else { %> -->
+                    <% } else { %>
                         <li class="no-hover"><a class="no-hover"><%= user_id %> - <%= score %></a></li>
                         <li><a href="/mypage">내 정보</a></li>
                         <li><a href="/logout">로그아웃</a></li>
-                    <!-- <% } %> -->
+                    <% } %>
                 </ul>
             </div>
         </nav>
@@ -70,20 +70,16 @@
                     <div class="card">
                         <% switch (info[i].pType) { %>
                             <% case "network": %>
-                                <div class="card-content lighten-5 red problem-type PT-network">
-                                </div>
+                                <div class="card-content lighten-5 red problem-type PT-network"></div>
                                 <% break; %>
                             <% case "server": %>
-                                <div class="card-content lighten-5 red problem-type PT-server">
-                                </div>
+                                <div class="card-content lighten-5 red problem-type PT-server"></div>
                                 <% break; %>
                             <% case "web": %>
-                                <div class="card-content lighten-5 red problem-type PT-web">
-                                </div>
+                                <div class="card-content lighten-5 red problem-type PT-web"></div>
                                 <% break; %>
                             <% default : %>
-                                <div class="card-content lighten-5 red problem-type PT-network">
-                                </div>
+                                <div class="card-content lighten-5 red problem-type PT-network"></div>
                         <% } %>
                         <div class="card-content">
                             <p><%= info[i].TITLE %></p>
@@ -100,7 +96,7 @@
             <% } %>
 
             
-            <div class="col s12 m3">
+            <!-- <div class="col s12 m3">
                 <div class="card">
                     <div class="card-content lighten-5 red problem-type">
                         <div id="test2" class="active"></div>
@@ -114,10 +110,9 @@
                                 <a>350</a>
                             </li>
                         </ul>
-                        <!-- 아니 제가 카페인을 마시면 심장이 두근두근 뛰거든요? 아니 진짜 개발하면서 목말라서 데자와 마시고있는데 심장이 존나 두근두근 뛰는거임! 그래서 "설마 여기에 카페인이 들었나?" 해서 찾아보니까 고카페인 음료였음ㅋ -->
                     </div>
                 </div>
-            </div>
+            </div> -->
             
         </div>
     </main>
