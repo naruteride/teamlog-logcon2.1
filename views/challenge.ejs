@@ -33,7 +33,6 @@
                 <a href="#" data-target="slide-out" class="sidenav-trigger waves-effect"><i id="menu-icon" class="material-icons full hide-on-large-only">  </i></a>
                 <a href="#" class="brand-logo">문제 내용</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <!-- 주석 해제 -->
                     <% if (user_school == "undefined") { %>
                         <li><a href="#login" class="modal-trigger">로그인</a></li>
                         <li><a href="#register" class="modal-trigger">회원가입</a></li>
@@ -93,71 +92,208 @@
             <div class="row">
                 <form action="/challenges/<%= pid %>" method="POST" class="col s12">
                     <div class="row flex">
-                        <div class="input-field col s11">
+                        <div class="input-field col s12">
                             <input name="answer" id="flag" type="text" class="validate">
                             <label for="flag">flag</label>
                         </div>
-                        <button class="btn waves-effect waves-light right col s1" type="submit" name="action">제출</button>
+                        <button class="btn waves-effect waves-light right col s1 problem-from-button" type="submit" name="action">제출</button>
                     </div>
                 </form>
             </div>
         </div>
         
-        <!-- <div class="problem">
-            
-            <span class="problem_title">
-                문제명 : αQμα Σαη
-            </span>
-                <br>
-                <hr>
-                <br>
-            
-            <span class="problem_content">
-                    호연이는 DC 확장 유니버스 최고의 띵작인 아쿠아맨, 즉, 갓-쿠아맨을 2회차나 보았다. 
-                    호연이는 html 속에 아쿠아맨의 감상평을 적어 놓았다고 한다.
-                    
-                    호연이가 적은 감상평은 무엇일지 찾아보자.
-                    
-                    그리고 아쿠아맨은 꼭 보자.
-                    
-                    P.S 해킹 문제 아니니까 제발 base64 쓰지 말자 진짜 html 문제임.
-            </span>
-                <br>
-                
-                <br>
-
-            
-            <span class="problem_link"><a href="a;sdjfalks">문제 링크</a></span>
-            <br>
-            <br>
-            <div class="row">
-                <form action="/" method="POST" class="col s12">
-                    <div class="row flex">
-                        <div class="input-field col s11">
-                            <input id="flag" type="text" class="validate">
-                            <label for="flag">flag</label>
-                        </div>
-                        <button class="btn waves-effect waves-light right col s1" type="submit" name="action">제출</button>
-                    </div>
-                </form>
-            </div>
-        </div> -->
-        
-
-
     </main>
-
-
-
-
-
-
-
-
 
     <footer>
 
     </footer>
+
+    <!-- Modal Structure -->
+    <div id="login" class="modal">
+        <form action="/login" method="POST">
+            <div class="modal-content">
+                <h4>로그인</h4>
+            
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input name="id" placeholder="guchiman12" id="Lusername" type="text" class="validate" minlength="5" maxlength="20" required>
+                        <label for="Lusername">User Name</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input name="pw" placeholder="•••••••••••••••••••" id="Lpassword" type="password" class="validate" minlength="8" maxlength="20" required>
+                        <label for="Lpassword">Password</label>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="waves-effect btn-flat submit-button">로그인</button>
+                <a href="#!" class="modal-close waves-effect btn-flat">뒤로</a>
+            </div>
+        </form>
+    </div>
+
+    <!-- Modal Structure -->
+    <div id="register" class="modal">
+        <form action="/register" method="POST">
+            <div class="modal-content">
+                <h4>회원가입</h4>
+            
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input name="id" placeholder="guchiman12" id="Rusername" type="text" class="validate" minlength="5" maxlength="20" required>
+                        <label for="Rusername">User Name</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input name="pw" placeholder="jung5hak2seng7chan!" id="Rpassword" type="password" class="validate" minlength="8" maxlength="20" required>
+                        <label for="Rpassword">Password</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input placeholder="•••••••••••••••••••" id="confirmPassword" type="password" class="validate" minlength="8" maxlength="20" required>
+                        <label id="confirmPassword-label" for="confirmPassword">Confirm Password</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input name="email" placeholder="IiLeohGeLaDo66" id="email" type="text" class="validate" required>
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <select name="domain">
+                            <option value="@gmail.com" selected>@gmail.com</option>
+                            <option value="@naver.com">@naver.com</option>
+                            <option value="@daum.net">@daum.net</option>
+                        </select>
+                        <label>Select Domain</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input name="school" placeholder="오류중학교" id="school" type="text" class="validate" pattern="^[가-힣]*$" title="한글로 띄어쓰기 없이 입력. ex)오류중학교" required>
+                        <label for="school">school</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label>
+                        <input name="grade" value="중학생" type="radio" checked />
+                        <span>중학생</span>
+                    </label>
+                     &nbsp; &nbsp; &nbsp; 
+                    <label>
+                        <input name="grade" value="고등학생" type="radio" />
+                        <span>고등학생</span>
+                    </label>
+                </div>
+                
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="waves-effect btn-flat submit-button">회원가입</button>
+                <a href="#!" class="modal-close waves-effect btn-flat">뒤로</a>
+            </div>
+        </form>
+    </div>
+
+    <!-- Modal Structure -->
+    <div id="loginAndRegister" class="modal modal-fixed-footer">
+        <form id="loginAndRegister-form" action="/login" method="POST">
+            <div class="modal-content">
+                <h4>로그인/회원가입</h4>
+                <ul class="collapsible">
+                    <li id="MLheader" class="active">
+                        <div class="collapsible-header">로그인</div>
+                        <div class="collapsible-body">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input name="id" placeholder="guchiman12" id="MLusername" type="text" class="validate" minlength="5" maxlength="20" required>
+                                    <label for="MLusername">User Name</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                            <!-- 로그콘 콘솔버전일때 회원가입 업데이트된거 서버에 올려야하는데 갑자기 부모님께 시골 납치됐다면서 못올린다고 연락와서 난리났었음. 다행히 당일 새벽에 돌아와서 금방 올릴 수 있었어여ㅎ -->
+                                <div class="input-field col s12">
+                                    <input name="pw" placeholder="•••••••••••••••••••" id="MLpassword" type="password" class="validate" minlength="8" maxlength="20" required>
+                                    <label for="MLpassword">Password</label>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+
+                    <li id="MRheader">
+                        <div class="collapsible-header">회원가입</div>
+                        <div class="collapsible-body">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input name="id" placeholder="guchiman12" id="MRusername" type="text" class="validate" minlength="5" maxlength="20" required disabled>
+                                    <label for="MRusername">User Name</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input name="pw" placeholder="jung5hak2seng7chan!" id="MRpassword" type="password" class="validate" minlength="8" maxlength="20" required disabled>
+                                    <label for="MRpassword">Password</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input placeholder="•••••••••••••••••••" id="MconfirmPassword" type="password" class="validate" minlength="8" maxlength="20" required disabled>
+                                    <label id="MconfirmPassword-label" for="MconfirmPassword">Confirm Password</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input name="email" placeholder="IiLeohGeLaDo66" id="MRemail" type="text" class="validate" required>
+                                    <label for="email">Email</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <select name="domain">
+                                        <option value="@gmail.com" selected>@gmail.com</option>
+                                        <option value="@naver.com">@naver.com</option>
+                                        <option value="@daum.net">@daum.net</option>
+                                    </select>
+                                    <label>Select Domain</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input name="school" placeholder="오류중학교" id="Mschool" type="text" class="validate" pattern="^[가-힣]*$" title="한글로 띄어쓰기 없이 입력. ex)오류중학교" required disabled>
+                                    <label for="Mschool">school</label>
+                                    <!-- 크리스마스때 놀지도 못하고 개발이나 하고있네ㅠㅠ -->
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <label>
+                                    <input name="grade" value="중학생" type="radio" checked />
+                                    <span>중학생</span>
+                                </label>
+                                 &nbsp; &nbsp; &nbsp; 
+                                <label>
+                                    <input name="grade" value="고등학생" type="radio" />
+                                    <span>고등학생</span>
+                                </label>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="modal-footer">
+                <button type="submit" id="loginAndRegister-submit" class="waves-effect btn-flat submit-button">로그인</button>
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">뒤로</a>
+            </div>
+        </form>
+    </div>
 </body>
-    </html>
+</html>
     

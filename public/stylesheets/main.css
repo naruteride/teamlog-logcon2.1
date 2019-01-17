@@ -236,47 +236,6 @@ main {
     background-image: url("../images/web.svg");
 }
 
-@media (max-width: 992px) {
-    .nav-wrapper {
-        padding-left: 0;
-    }
-    main {
-        width: 90vw;
-        margin: auto;
-        padding: 1rem 0;
-    }
-    .date_block > h3 {
-        font-size: 1.9rem;
-    }
-    .notice_block ul {
-        padding-left: 2em;
-    }
-}
-
-@media (max-width: 601px) {
-    .notice_block {
-        padding: 1em;
-    }
-    #alarm-content {
-        padding: 1rem;
-    }
-    .big-emoticon {
-        font-size: 3rem;
-    }
-}
-
-@media only screen and (min-width: 601px) {
-    nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
-        height: 110px;
-        line-height: 110px;
-    }
-
-    .sidenav {
-        box-shadow: none;
-        background-color: var(--point-color);
-    }
-
-}
 
 .text-small {
     font-size: 1.0rem;
@@ -322,7 +281,7 @@ main {
 .ranking_number{
     font-size: 150%;
     color: #c3262e;
-   
+    
 }
 .ranking_number_first{
     color:#FFE641;
@@ -348,7 +307,7 @@ main {
 /*notice*/
 
 
-.notice_box{
+.notice_box {
     font-size: 150%;
     padding: 1em calc(2em + 25px) 1em 1em;
     margin: 1em 0;
@@ -364,7 +323,7 @@ main {
 }
 .notice_fix {
     border-color:#FA7268;
-    box-shadow: 0 1px 5px #FA726877;
+    box-shadow: 0 0 5px #FA726877;
     
 }
 .gray_bg{
@@ -402,4 +361,57 @@ main {
 .flex {
     display: flex;
     align-items: center;
+}
+.problem-from-button {
+    width: 70px !important;
+}
+@media (max-width: 992px) {
+    .nav-wrapper {
+        padding-left: 0;
+    }
+    main {
+        width: 90vw;
+        margin: auto;
+        padding: 1rem 0;
+    }
+    .date_block > h3 {
+        font-size: 1.9rem;
+    }
+    .notice_block ul {
+        padding-left: 2em;
+    }
+    .notice_box ul {
+        padding-left: 0;
+    }
+    .problem {
+        width: 90%;
+    }
+}
+
+@media (max-width: 601px) {
+    .notice_block {
+        padding: 1em;
+    }
+    #alarm-content {
+        padding: 1rem;
+    }
+    .big-emoticon {
+        font-size: 3rem;
+    }
+    .notice_box {
+        padding: 1em;
+    }
+}
+
+@media only screen and (min-width: 601px) {
+    nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
+        height: 110px;
+        line-height: 110px;
+    }
+
+    .sidenav {
+        box-shadow: none;
+        background-color: var(--point-color);
+    }
+
 }
