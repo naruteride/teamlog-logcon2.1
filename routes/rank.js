@@ -4,7 +4,6 @@ const path = require('path');
 const router = express.Router();
 
 router.get('/',(req,res) => {
-    console.log('sival')
     db.query('select SCORE,SCHOOL,ID,PROFILE_COMMENT from Users where id!="admin"', (err,result) => {
         if (err) throw err;
         if(!(req.session.user === undefined)){
