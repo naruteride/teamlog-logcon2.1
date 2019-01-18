@@ -78,11 +78,23 @@
                         <% } %>
                         
                         <div class="card-content">
-                            <p><a href="/challenges/<%= i + 1 %>"><%= info[i].TITLE %></a></p>
+                            <p><a href="/challenges/<%= info[i].ID %>"><%= info[i].TITLE %></a></p>
                         </div>
                         <div class="card-tabs">
                             <ul class="tabs tabs-fixed-width tabs-transparent">
-                                <li class="tab red">
+                                <% var flag = 0; %>
+                                <% for (var j = 0; j < solve.length; j++) { %>
+                                    <% if (info[i].ID === solve[j].PID) { %>
+                                        <% flag = 1; %>
+                                    <% } %>
+                                <% } %>
+
+                            
+                                <% if (!flag) { %>
+                                    <li class="tab red text-white">
+                                <% } else { %>
+                                    <li class="tab grey text-white">
+                                <% } %>
                                     <%= info[i].SCORE %>
                                 </li>
                             </ul>
