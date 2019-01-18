@@ -17,7 +17,7 @@
 
 html, body {
     margin: 0;
-    font-family: "SeoulNamsan", "gulim";
+    font-family: "SeoulNamsan", "sans-serif";
     width: 100vw;
     overflow-x: hidden;
     background-color: #ffffff
