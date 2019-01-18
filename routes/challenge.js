@@ -61,21 +61,25 @@ router.post('/:num',(req,res) => {
 
 router.get('/',(req,res) => {
     db.query('select TITLE,SCORE,PTYPE from Problems',(err,result) => {
-        if(err) throw err;
-        if(!(req.session.user === undefined)){
-            if(!(req.session.flag))
-                res.redirect('/auth');
-            else{
-                res.render('challenges.ejs',{
-                    info : result,
-                    user_id : req.session.user,
-                    user_school: req.session.school,
-                    score : req.session.score
-                })
+        if(err) console.log(err);
+        db.query('select PID from Solved where USER = ?',req.session.user,(error,data) => {
+            if(error) throw error;
+            if(!(req.session.user === undefined)){
+                if(!(req.session.flag))
+                    res.redirect('/auth');
+                else{
+                    res.render('challenges.ejs',{
+                        info : result,
+                        user_id : req.session.user,
+                        user_school: req.session.school,
+                        score : req.session.score,
+                        solve : data
+                    })
+                }
             }
-        }
-        else
-            res.redirect('/');
+            else
+                res.redirect('/');
+        });
     });
 });
 
