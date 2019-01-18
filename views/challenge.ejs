@@ -64,7 +64,7 @@
 
 
     </header>
-    <!--아니 제가 카레를 진짜 못 먹는데 부모님이 저만빼고 외식하러 가신대요. 스프커리 먹으러 간다고 하시면서 먹고싶으면 너도 오라고 하심 ㅎ 카레 싫어하는거 알면서-->
+
     <main>
         <div class="problem">
             
@@ -84,7 +84,7 @@
                 <br>
 
             <% if (info[0].FILE_PATH != "false") { %>
-                <a href="<%= info[0].FILE_PATH %>" download="<%= info[0].TITLE %>">파일 다운로드 링크</a>
+                <a href="<%= info[0].FILE_PATH %>" target="_blank">파일 다운로드 링크</a>
                 <br>
             <% } %>
             <br>
@@ -93,6 +93,7 @@
                 <form action="/challenges/<%= pid %>" method="POST" class="col s12">
                     <div class="row flex">
                         <div class="input-field col s12">
+                                <!-- 로그콘 개최하려고 주요 개발자 몇명은 한 집에 모여서 다같이 개발하고있어요ㅎ -->
                             <input name="answer" id="flag" type="text" class="validate">
                             <label for="flag">flag</label>
                         </div>
