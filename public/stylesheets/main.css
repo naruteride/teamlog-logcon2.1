@@ -415,3 +415,7 @@ main {
     }
 
 }
+
+.text-white {
+    color: white !important;
+}
