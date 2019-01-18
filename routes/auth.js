@@ -2,6 +2,7 @@ const express = require('express');
 const nodemailer = require('nodemailer');
 const db = require('../db/connection');
 const router = express.Router();
+const moment = require('moment');
 const randomstring = require('randomstring');
 
 router.get('/', (req,res) => {
@@ -21,6 +22,7 @@ router.get('/', (req,res) => {
     else{
         const key = req.body.key; 
         const email = req.body.email;
+        const time = moment().format('MMMM Do YYYY, h:mm:ss a');
         if(!(req.body.key===undefined)){
             db.query('select AUTHKEY from Users where ID = ?',req.session.user,(err,result) => {
                 if(err) throw err;
@@ -29,10 +31,13 @@ router.get('/', (req,res) => {
                     req.session.flag = 1;
                     req.session.save(() => {
                         res.send('<script type="text/javascript">alert("인증성공!(๑′ᴗ‵๑)");window.location.href="/";</script>');
+                        console.log(time+':'+req.session.user+' 인증성공')
                     })
                 }
-                else
+                else{
                     res.send('<script type="text/javascript">alert("인증실패!(ꐦ°д°)");window.location.href="auth";</script>');
+                    console.log(time+':'+req.session.user+' 인증실패');
+                }
             })
         }
         else{
@@ -61,7 +66,7 @@ router.get('/', (req,res) => {
                         if(err)
                             console.log(err);
                         else{
-                            console.log('sibal',response);
+                            console.log(response,time);
                         }   
                     })
                 }
