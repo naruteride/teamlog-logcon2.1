@@ -18,8 +18,11 @@ router.post('/',(req,res) => {
     const tmpPwd = crypto.createHash('sha512').update(pw).digest('base64');
     if(tmpId===''||tmpPwd===''||tmpEmail===''||tmpSchool === ''||tmpGrade === '')
         res.send('<script type="text/javascript">alert("입력되지 않은 값이 있어요!(*•̀ᴗ•́*)");window.location.href="/";</script>');
-    if(pw.length<8||pw.length>20||tmpId.length>20||tmpId.length<5)
+    else if(pw.length<8||pw.length>20||tmpId.length>20||tmpId.length<5)
         res.send('<script type="text/javascript">alert("아이디나 패스워드의 길이를 맞춰주세요!(´ヘ｀()");window.location.href="/";</script>');
+    else if(tmpId.indexOf(' ') !== -1){
+        res.send('<script type="text/javascript">alert("아이디에는 공백이 들어가면 안돼요!ʅ( ՞ਊ՞)ʃ≡");window.location.href="/";</script>');
+    }
     else{
         db.query('select SCORE from Users where ID = ?', tmpId, (err, result) => {
 			if(err) console.error(err);
