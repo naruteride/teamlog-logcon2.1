@@ -62,17 +62,17 @@
     </header>
 
     <main>
+    <div class="notice_fix notice_box">
+    
+    <ul>
+        <li>플래그는 <span class="gray_bg">TeamLog{플래그}</span> 형식으로 제출하셔야 합니다.</li>
+        <li>문의는 팀로그 페이스북(@sunrintog) 또는 010-5390-9318로 연락 부탁드립니다.</li>
+        <li>플래그를 타인에게 공유·배포시 즉시 실격되며, 로그콘 참가자격이 박탈됩니다.</li>
         <!--개발하면서 달팬 옆에 있는 이름없는 파스타 갔는데 ㄹㅇ JMT였음 여러분들도 꼭 가세요.-->
-        <div class="notice_fix notice_box">
-
-            <ul>
-                <li>플래그는 <span class="gray_bg">TeamLog{플래그}</span> 형식으로 제출하셔야 합니다.</li>
-                <li>문의는 팀로그 페이스북(@sunrintog) 또는 010-5390-9318로 연락 부탁드립니다.</li>
-                <li>플래그를 타인에게 공유·배포시 즉시 실격되며, 로그콘 참가자격이 박탈됩니다.</li>
-            </ul>
-        </div>
-
-        <% for (var i = 0; i < notice.length; i++) { %>
+    </ul>
+    </div>
+    
+    <% for (var i = 0; i < notice.length; i++) { %>
             <div class="notice_box">
                 <h5 class="notice_title">제목 : <%= notice[i].TITLE %></h5>
                 <ul>
