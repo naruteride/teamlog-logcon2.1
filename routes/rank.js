@@ -11,9 +11,9 @@ router.get('/',(req,res) => {
                 res.redirect('/auth');
             else{
                 res.render('rank.ejs',{
-                    user_id : result[0].ID,
-                    user_school : result[0].SCHOOL,
-                    score : result[0].SCORE,
+                    user_id : req.session.user,
+                    user_school : req.session.user_school,
+                    score : req.session.score,
                     users : result
                 });
             }
