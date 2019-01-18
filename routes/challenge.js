@@ -40,7 +40,7 @@ router.post('/:num',(req,res) => {
                 if(results.length === 0){
                     db.query('update Users set SCORE=? where ID = ?',[result[0].SCORE + req.session.score,user]);
                     db.query('insert into Solved (PID,USER) values (?,?)',[pnum,user]);
-                    req.session.score = result[0].SCORE;
+                    req.session.score += result[0].SCORE;
                     req.session.save(() => {
                         res.send('<script type="text/javascript">alert("정답!!!٩(๑❛ワ❛๑)و");window.location.href="/challenges";</script>');
                         console.log(time+': '+user + ' 문제 품' + pnum +'번 문제 답: ' + ans+' - '+ip);
