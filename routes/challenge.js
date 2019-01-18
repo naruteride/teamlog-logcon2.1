@@ -60,7 +60,7 @@ router.post('/:num',(req,res) => {
 });
 
 router.get('/',(req,res) => {
-    db.query('select TITLE,SCORE,PTYPE from Problems',(err,result) => {
+    db.query('select TITLE,SCORE,PTYPE,ID from Problems',(err,result) => {
         if(err) console.log(err);
         db.query('select PID from Solved where USER = ?',req.session.user,(error,data) => {
             if(error) throw error;
