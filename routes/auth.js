@@ -23,6 +23,10 @@ router.get('/', (req,res) => {
         const key = req.body.key; 
         const email = req.body.email;
         const time = moment().format('MMMM Do YYYY, h:mm:ss a');
+        const ip = req.headers['x-forwarded-for'] ||
+        req.connection.remoteAddress ||
+        req.socket.remoteAddress ||
+        req.connection.socket.remoteAddress;
         if(!(req.body.key===undefined)){
             db.query('select AUTHKEY from Users where ID = ?',req.session.user,(err,result) => {
                 if(err) throw err;
@@ -31,12 +35,12 @@ router.get('/', (req,res) => {
                     req.session.flag = 1;
                     req.session.save(() => {
                         res.send('<script type="text/javascript">alert("인증성공!(๑′ᴗ‵๑)");window.location.href="/";</script>');
-                        console.log(time+':'+req.session.user+' 인증성공')
+                        console.log(time+':'+req.session.user+' 인증성공 - '+ip)
                     })
                 }
                 else{
                     res.send('<script type="text/javascript">alert("인증실패!(ꐦ°д°)");window.location.href="auth";</script>');
-                    console.log(time+':'+req.session.user+' 인증실패');
+                    console.log(time+':'+req.session.user+' 인증실패 - ' + ip);
                 }
             })
         }
@@ -66,7 +70,7 @@ router.get('/', (req,res) => {
                         if(err)
                             console.log(err);
                         else{
-                            console.log(response,time);
+                            console.log(response,time+'-'+ip);
                         }   
                     })
                 }

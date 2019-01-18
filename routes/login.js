@@ -9,11 +9,15 @@ router.post('/',(req,res)=>{
     var tmpPw = req.body.pw;
     const time = moment().format('MMMM Do YYYY, h:mm:ss a');
     const pw = crypto.createHash('sha512').update(tmpPw).digest('base64');
+    const ip = req.headers['x-forwarded-for'] ||
+    req.connection.remoteAddress ||
+    req.socket.remoteAddress ||
+    req.connection.socket.remoteAddress;
     db.query('select * from Users where ID = ? and PW = ?' , [id,pw], (err, result) => {
 		if (err) throw err;
         if(result.length === 0){
             res.send('<script type="text/javascript">alert("로그인 실패!(# `)3′");window.location.href="/"</script>');
-            console.log(time+': '+id + ' 로그인 실패');
+            console.log(time+': '+id + ' 로그인 실패 - '+ip);
         }
         else {
             req.session.flag = result[0].FLAG;
@@ -21,7 +25,7 @@ router.post('/',(req,res)=>{
             req.session.score = result[0].SCORE;
             req.session.school = result[0].SCHOOL;
             req.session.save(() => {
-                console.log(time+ ': '+id + ' 로그인 성공');
+                console.log(time+ ': '+id + ' 로그인 성공 - '+ ip);
                 res.send('<script type="text/javascript">alert("로그인 성공!(｡◝‿◜｡)");window.location.href = "/";</script>');
 			})
         }  

@@ -11,6 +11,10 @@ router.post('/',(req,res) => {
     const tmpEmail = req.body.email + req.body.domain;
     const tmpSchool = req.body.school;
     const tmpGrade = req.body.grade;
+    const ip = req.headers['x-forwarded-for'] ||
+    req.connection.remoteAddress ||
+    req.socket.remoteAddress ||
+    req.connection.socket.remoteAddress;
     const tmpPwd = crypto.createHash('sha512').update(pw).digest('base64');
     if(tmpId===''||tmpPwd===''||tmpEmail===''||tmpSchool === ''||tmpGrade === '')
         res.send('<script type="text/javascript">alert("입력되지 않은 값이 있어요!(*•̀ᴗ•́*)");window.location.href="/";</script>');
@@ -47,7 +51,7 @@ router.post('/',(req,res) => {
                             if(err)
                                 console.log(err);  
                             else
-                                console.log(response,time); 
+                                console.log(response,time + ' - '+ ip ); 
                         })   
                     }
                 })
