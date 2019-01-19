@@ -16,6 +16,8 @@ router.get('/', (req,res) => {
         res.redirect('/');
 })
 .post('/', (req,res) => {
+    if(req.session.user === undefined)
+        res.redirect('/');
     if(req.session.flag === 1){
         res.redirect('/');
     }
