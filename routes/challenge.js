@@ -25,7 +25,6 @@ router.get('/:num',(req,res) => {
         res.redirect('/');
 });
 router.post('/:num',(req,res) => {
-    const user = req.session.user;
     const ans = req.body.answer;
     const time = moment().format('MMMM Do YYYY, h:mm:ss a');
     const ip = req.headers['x-forwarded-for'] ||
@@ -33,31 +32,36 @@ router.post('/:num',(req,res) => {
     req.socket.remoteAddress ||
     req.connection.socket.remoteAddress;
     pid = req.session.num;
-    db.query('select ANSWER,SCORE from Problems where ID = ?',req.session.num,(err,result) => {
-        if(err) throw err;
-        if(result[0].ANSWER === ans){
-            db.query('select * from Solved where PID = ? and USER = ?',[req.session.num,user],(error,results) => {
-                if(error) console.log(error);
-                if(results.length === 0){
-                    db.query('update Users set SCORE=? where ID = ?',[result[0].SCORE + req.session.score,user]);
-                    db.query('insert into Solved (PID,USER) values (?,?)',[req.session.num,user]);
-                    req.session.score += result[0].SCORE;
-                    req.session.save(() => {
-                        res.send('<script type="text/javascript">alert("정답!!!٩(๑❛ワ❛๑)و");window.location.href="/challenges";</script>');
-                        console.log(time+': '+user + ' 문제 품' + pid +'번 문제 답: ' + ans+' - '+ip);
-                    })
-                }
-                else{
-                    res.send('<script type="text/javascript">alert("복습은 아주 좋은거죠 하지만 점수는 없어요ㅎ⁽⁽◝( ˙ ꒳ ˙ )◜⁾⁾");window.location.href="/challenges";</script>');
-                    console.log(time+': '+user + ' 문제 또 품' + pid +'번 문제 답: ' + ans+' - '+ip);
-                }
-            });
-        }
-        else{
-            res.send('<script type="text/javascript">alert("정답이 아니에요....૮(꒦ິ ˙̫̮ ꒦ິ)ა");window.location.href="/challenges";</script>');
-            console.log(time+': '+user + ' 문제 틀림' + pid +'번 문제 답: ' + ans+' - '+ip);
-        }  
-    });
+    if(req.session.user === undefined)
+        res.redirect('/');
+    else{
+        const user = req.session.user;
+        db.query('select ANSWER,SCORE from Problems where ID = ?',req.session.num,(err,result) => {
+            if(err) throw err;
+            if(result[0].ANSWER === ans){
+                db.query('select * from Solved where PID = ? and USER = ?',[req.session.num,user],(error,results) => {
+                    if(error) console.log(error);
+                    if(results.length === 0){
+                        db.query('update Users set SCORE=? where ID = ?',[result[0].SCORE + req.session.score,user]);
+                        db.query('insert into Solved (PID,USER) values (?,?)',[req.session.num,user]);
+                        req.session.score += result[0].SCORE;
+                        req.session.save(() => {
+                            res.send('<script type="text/javascript">alert("정답!!!٩(๑❛ワ❛๑)و");window.location.href="/challenges";</script>');
+                            console.log(time+': '+user + ' 문제 품' + pid +'번 문제 답: ' + ans+' - '+ip);
+                        })
+                    }
+                    else{
+                        res.send('<script type="text/javascript">alert("복습은 아주 좋은거죠 하지만 점수는 없어요ㅎ⁽⁽◝( ˙ ꒳ ˙ )◜⁾⁾");window.location.href="/challenges";</script>');
+                        console.log(time+': '+user + ' 문제 또 품' + pid +'번 문제 답: ' + ans+' - '+ip);
+                    }
+                });
+            }
+            else{
+                res.send('<script type="text/javascript">alert("정답이 아니에요....૮(꒦ິ ˙̫̮ ꒦ິ)ა");window.location.href="/challenges";</script>');
+                console.log(time+': '+user + ' 문제 틀림' + pid +'번 문제 답: ' + ans+' - '+ip);
+            }
+        });
+    }
 });
 
 router.get('/',(req,res) => {
