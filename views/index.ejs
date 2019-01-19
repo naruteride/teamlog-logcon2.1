@@ -35,9 +35,8 @@
                         <li><a href="#login" class="modal-trigger">로그인</a></li>
                         <li><a href="#register" class="modal-trigger">회원가입</a></li>
                     <% } else { %>
-                        <li class="no-hover"><!-- 로그콘 개발자중에 카레 진짜 싫어하는 후배 있는데 후배 친구들이 강제로 고씨네(카레전문점) 끌고가서 카레 강제로 먹였다가 배탈나고 돈 8500원 날리고 엌ㅋㅋㅋㅋㅋㅋ --><a class="no-hover"><%= user_id %> - <%= score %></a></li>
+                        <li class="no-hover"><a class="no-hover"><%= user_id %> - <%= score %></a></li>
                         <li><a href="/mypage">내 정보</a></li>
-                        <li><a href="/logout">로그아웃</a></li>
                     <% } %>
                 </ul>
             </div>
@@ -59,26 +58,26 @@
             </li>
         </ul>
 
-
+        
     </header>
-
+    
     <main>
         <div class="image_block"></div>
 
         <div class = "date_block">
-            <h3><span class="sentence">대회일정 : </span> <span class="sentence">2019년 1월 19일 오전 9시 <span class="sentence"> ~ 2019년 1월 20일 오전 9시</span></span></h3>
+            <h3><span class="sentence">대회일정 : </span> <span class="sentence">2019년 1월 19일 오전 10시 <span class="sentence"> ~ 2019년 1월 20일 오전 10시</span></span></h3>
         </div>
         <div class="notice_block">
             <!--아쿠아맨 개꿀잼 아쿠아맨 붐은 온다-->
             <ul>
+                <li>수상은 중학생을 대상으로 진행됩니다. 참고해주세요.</li>
                 <li>아이디나 코멘트에 부적절한 문구가 있을 경우, 즉시 삭제 조치하겠습니다.</li>
                 <li>이름이나 학교명을 제대로 기재하지 않을 경우, 상품전달과 수상에 어려움이 생길 수 있으므로 주의하여 기재해주세요.</li>
                 <li>기재된 내용을 확인 할 수 없는 경우, 수상이 취소될 수 있습니다.</li>
-                <li>문의는 팀로그 페이스북을 통해 해주시면 됩니다.</li>
                 <li>해킹 및 악의적인 접근이 확인될 경우 즉시 로그콘 실격 처리되며 제재를 가하겠습니다.</li>
             </ul>
         </div>
-
+        
     </main>
 
     <footer>
@@ -90,7 +89,7 @@
         <form action="/login" method="POST">
             <div class="modal-content">
                 <h4>로그인</h4>
-
+            
                 <div class="row">
                     <div class="input-field col s6">
                         <input name="id" placeholder="guchiman12" id="Lusername" type="text" class="validate" minlength="5" maxlength="20" required>
@@ -101,7 +100,7 @@
                         <label for="Lpassword">Password</label>
                     </div>
                 </div>
-
+                
             </div>
             <div class="modal-footer">
                 <button type="submit" class="waves-effect btn-flat submit-button">로그인</button>
@@ -115,7 +114,7 @@
         <form action="/register" method="POST">
             <div class="modal-content">
                 <h4>회원가입</h4>
-
+            
                 <div class="row">
                     <div class="input-field col s12">
                         <input name="id" placeholder="guchiman12" id="Rusername" type="text" class="validate" minlength="5" maxlength="20" required>
@@ -161,13 +160,13 @@
                         <input name="grade" value="중학생" type="radio" checked />
                         <span>중학생</span>
                     </label>
-                     &nbsp; &nbsp; &nbsp;
+                     &nbsp; &nbsp; &nbsp; 
                     <label>
                         <input name="grade" value="고등학생" type="radio" />
                         <span>고등학생</span>
                     </label>
                 </div>
-
+                
             </div>
             <div class="modal-footer">
                 <button type="submit" class="waves-effect btn-flat submit-button">회원가입</button>
@@ -192,7 +191,6 @@
                                 </div>
                             </div>
                             <div class="row">
-                            <!-- 로그콘 콘솔버전일때 회원가입 업데이트된거 서버에 올려야하는데 갑자기 부모님께 시골 납치됐다면서 못올린다고 연락와서 난리났었음. 다행히 당일 새벽에 돌아와서 금방 올릴 수 있었어여ㅎ -->
                                 <div class="input-field col s12">
                                     <input name="pw" placeholder="•••••••••••••••••••" id="MLpassword" type="password" class="validate" minlength="8" maxlength="20" required>
                                     <label for="MLpassword">Password</label>
@@ -245,7 +243,6 @@
                                 <div class="input-field col s12">
                                     <input name="school" placeholder="오류중학교" id="Mschool" type="text" class="validate" pattern="^[가-힣]*$" title="한글로 띄어쓰기 없이 입력. ex)오류중학교" required disabled>
                                     <label for="Mschool">school</label>
-                                    <!-- 크리스마스때 놀지도 못하고 개발이나 하고있네ㅠㅠ -->
                                 </div>
                             </div>
 
@@ -254,7 +251,7 @@
                                     <input name="grade" value="중학생" type="radio" checked />
                                     <span>중학생</span>
                                 </label>
-                                 &nbsp; &nbsp; &nbsp;
+                                 &nbsp; &nbsp; &nbsp; 
                                 <label>
                                     <input name="grade" value="고등학생" type="radio" />
                                     <span>고등학생</span>
@@ -273,3 +270,4 @@
     </div>
 </body>
 </html>
+
