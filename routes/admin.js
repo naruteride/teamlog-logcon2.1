@@ -44,7 +44,7 @@ router.post('/insertP',(req,res) => {
         res.send('<script type="text/javascript">alert("추가완료!♪(๑ᴖ◡ᴖ๑)♪");window.location.href="/tligd/sibal";</script>');
     }
     else{
-        db.query('insert into Problems (TITLE,CONTENTS,ANSWER,SCORE,FILE_PATH) values(?,?,?,?,?)',[title,content,answer,score,file]);
+        db.query('insert into Problems (TITLE,CONTENTS,ANSWER,SCORE,FILE_PATH,PTYPE) values(?,?,?,?,?,?)',[title,content,answer,score,file,pType]);
         res.send('<script type="text/javascript">alert("추가완료!♪(๑ᴖ◡ᴖ๑)♪");window.location.href="/tligd/sibal";</script>');
     }
 })
