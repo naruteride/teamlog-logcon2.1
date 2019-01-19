@@ -32,29 +32,30 @@ router.post('/:num',(req,res) => {
     req.connection.remoteAddress ||
     req.socket.remoteAddress ||
     req.connection.socket.remoteAddress;
-    db.query('select ANSWER,SCORE from Problems where ID = ?',pnum,(err,result) => {
+    pid = req.params.num;
+    db.query('select ANSWER,SCORE from Problems where ID = ?',pid,(err,result) => {
         if(err) throw err;
         if(result[0].ANSWER === ans){
-            db.query('select * from Solved where PID = ? and USER = ?',[pnum,user],(error,results) => {
+            db.query('select * from Solved where PID = ? and USER = ?',[pid,user],(error,results) => {
                 if(error) console.log(error);
                 if(results.length === 0){
                     db.query('update Users set SCORE=? where ID = ?',[result[0].SCORE + req.session.score,user]);
-                    db.query('insert into Solved (PID,USER) values (?,?)',[pnum,user]);
+                    db.query('insert into Solved (PID,USER) values (?,?)',[pid,user]);
                     req.session.score += result[0].SCORE;
                     req.session.save(() => {
                         res.send('<script type="text/javascript">alert("정답!!!٩(๑❛ワ❛๑)و");window.location.href="/challenges";</script>');
-                        console.log(time+': '+user + ' 문제 품' + pnum +'번 문제 답: ' + ans+' - '+ip);
+                        console.log(time+': '+user + ' 문제 품' + pid +'번 문제 답: ' + ans+' - '+ip);
                     })
                 }
                 else{
                     res.send('<script type="text/javascript">alert("복습은 아주 좋은거죠 하지만 점수는 없어요ㅎ⁽⁽◝( ˙ ꒳ ˙ )◜⁾⁾");window.location.href="/challenges";</script>');
-                    console.log(time+': '+user + ' 문제 또 품' + pnum +'번 문제 답: ' + ans+' - '+ip);
+                    console.log(time+': '+user + ' 문제 또 품' + pid +'번 문제 답: ' + ans+' - '+ip);
                 }
             });
         }
         else{
             res.send('<script type="text/javascript">alert("정답이 아니에요....૮(꒦ິ ˙̫̮ ꒦ິ)ა");window.location.href="/challenges";</script>');
-            console.log(time+': '+user + ' 문제 틀림' + pnum +'번 문제 답: ' + ans+' - '+ip);
+            console.log(time+': '+user + ' 문제 틀림' + pid +'번 문제 답: ' + ans+' - '+ip);
         }  
     });
 });
