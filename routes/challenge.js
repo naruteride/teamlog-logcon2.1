@@ -60,27 +60,31 @@ router.post('/:num',(req,res) => {
 });
 
 router.get('/',(req,res) => {
-    db.query('select TITLE,SCORE,PTYPE,ID from Problems',(err,result) => {
-        if(err) console.log(err);
-        db.query('select PID from Solved where USER = ?',req.session.user,(error,data) => {
-            if(error) throw error;
-            if(!(req.session.user === undefined)){
-                if(!(req.session.flag))
-                    res.redirect('/auth');
-                else{
-                    res.render('challenges.ejs',{
-                        info : result,
-                        user_id : req.session.user,
-                        user_school: req.session.school,
-                        score : req.session.score,
-                        solve : data
-                    })
+    if(!(req.session.user === undefined)){
+        db.query('select TITLE,SCORE,PTYPE,ID from Problems',(err,result) => {
+            if(err) console.log(err);
+            db.query('select PID from Solved where USER = ?',req.session.user,(error,data) => {
+                if(error) throw error;
+                if(!(req.session.user === undefined)){
+                    if(!(req.session.flag))
+                        res.redirect('/auth');
+                    else{
+                        res.render('challenges.ejs',{
+                            info : result,
+                            user_id : req.session.user,
+                            user_school: req.session.school,
+                            score : req.session.score,
+                            solve : data
+                        })
+                    }
                 }
-            }
-            else
-                res.redirect('/');
+                else
+                    res.redirect('/');
+            });
         });
-    });
+    }
+    else
+        res.redirect('/');
 });
 
 module.exports = router;
