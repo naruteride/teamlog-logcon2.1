@@ -36,15 +36,15 @@ router.post('/:num',(req,res) => {
         res.redirect('/');
     else{
         const user = req.session.user;
-        db.query('select ANSWER,SCORE from Problems where ID = ?',req.session.num,(err,result) => {
+        db.query('select ANSWER from Problems where ID = ?',req.session.num,(err,result) => {
             if(err) throw err;
             if(result[0].ANSWER === ans){
                 db.query('select * from Solved where PID = ? and USER = ?',[req.session.num,user],(error,results) => {
                     if(error) console.log(error);
                     if(results.length === 0){
-                        db.query('update Users set SCORE=? where ID = ?',[result[0].SCORE + req.session.score,user]);
+                        //db.query('update Users set SCORE=? where ID = ?',[result[0].SCORE + req.session.score,user]);
                         db.query('insert into Solved (PID,USER) values (?,?)',[req.session.num,user]);
-                        req.session.score += result[0].SCORE;
+                        //req.session.score += result[0].SCORE;
                         req.session.save(() => {
                             res.send('<script type="text/javascript">alert("정답!!!٩(๑❛ワ❛๑)و");window.location.href="/challenges";</script>');
                             console.log(time+': '+user + ' 문제 품' + pid +'번 문제 답: ' + ans+' - '+ip);
