@@ -24,7 +24,7 @@ onload = function () {
     MRpw = document.querySelector("#MRpassword");
     MRconfirmPw = document.querySelector("#MconfirmPassword");
     MRconfirmPwLabel = document.querySelector("#MconfirmPassword-label");
-    MRemail = document.querySelector("#Memail");
+    MRemail = document.querySelector("#MRemail");
     MRschool = document.querySelector("#Mschool");
 
     confirmPw.addEventListener("focusout", e => {
@@ -105,6 +105,13 @@ onload = function () {
 
 
     
+
+
+        
+    var MRheader = document.querySelector("#MRheader");
+    if (MLheader != null) {
+        mobileRegisterDisable();
+    }
 };
 
 
@@ -163,4 +170,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var MLheader = document.querySelector("#MLheader");
     var MRheader = document.querySelector("#MRheader");
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems);
 });

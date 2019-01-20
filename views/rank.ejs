@@ -22,14 +22,12 @@
 
 </head>
 
-<!-- 오우! 이런곳에서 주석을 찾으셨군요?! 개발자도구좀 볼 줄 아는 놈인가?! 로그콘 페이지 곳곳에서는 개발자들의 다양한 비하힌드 스토리를 찾아보실 수 있습니다. 문제를 플다가 조금 지루해진다면 잠깐 보물찾기 하듯이 비하인드 스토리를 찾아보는건 어떨까요? (사실 이것도 부장님 몰래 만든겁니다ㅎ 걸리면 어떻게 될지 몰라요;;) -->
-
 <body>
     <header>
         <nav>
             <div class="nav-wrapper">
                 <a href="#" data-target="slide-out" class="sidenav-trigger waves-effect"><i id="menu-icon" class="material-icons full hide-on-large-only">  </i></a>
-                <a href="#" class="brand-logo">대문</a>
+                <a href="#" class="brand-logo">순위</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <% if (user_school == "undefined") { %>
                         <li><a href="#login" class="modal-trigger">로그인</a></li>
@@ -37,6 +35,7 @@
                     <% } else { %>
                         <li class="no-hover"><a class="no-hover"><%= user_id %> - <%= score %></a></li>
                         <li><a href="/mypage">내 정보</a></li>
+                        <li><a href="/logout">로그아웃</a></li>
                     <% } %>
                 </ul>
             </div>
@@ -58,41 +57,217 @@
             </li>
         </ul>
 
-
     </header>
 
     <main>
-        <div class="image_block"></div>
+        <div class="ranking">
 
-        <div class = "date_block">
-            <h3><span class="sentence">대회일정 : </span> <span class="sentence">2019년 1월 19일 오전 10시 30분 <span class="sentence"> ~ 2019년 1월 20일 오전 10시 30분</span></span></h3>
-            <br>
-            
-            <hr>
-            <br>
-            <h3><span class="sentence">로그콘이 종료되었습니다!</span></h3>
-            <h5>참가자 여러분 고생하셨습니다! 여러분이 열정적으로 참여해주신 덕분에 로그콘을 성공적으로 끝마칠 수 있었습니다!</h5>
-            <h5>순위권의 중학생분들은 문제풀이 제출 후에 검증을 마치고 추후 수상 방식의 공지가 전달될 것입니다.</h5>
-            <br>
-            <h5>
-                로그콘에 참여하면서 불편했던 점이나 개선할 부분이 있었다면 언제든지 팀로그 페이스북을 통해 알려주세요.
+            <!-- 서버에서 받은 값을 정렬해줌 -->
+            <% users.sort((a, b) => {return b.SCORE - a.SCORE}) %>
+            <% let count = 4; %>
+
+            <!-- 1등 -->
+            <div class="ranking_top">
+                
+                <span class="ranking_number_first">1</span> &nbsp; 
+                <span class="ranking_id"><%= users[0].ID %></span> &nbsp;
+                <span class="ranking_pts"><%= users[0].SCORE %> Pts</span>
                 <br>
-                여러분들의 따끔한 충고가 더 발전된 로그콘을 만듭니다!
-            </h5>
-            <br>
-            <hr>
-            <br>
-        </div>
-        <div class="notice_block">
-            <!--아쿠아맨 개꿀잼 아쿠아맨 붐은 온다-->
-            <ul>
-                <li>수상은 중학생을 대상으로 진행됩니다. 이 점 참고해주시길 바랍니다.</li>
-                <li>아이디나 코멘트에 부적절한 문구가 있을 경우, 즉시 삭제 조치하겠습니다.</li>
-                <li>이름이나 학교명을 제대로 기재하지 않을 경우, 상품전달과 수상에 어려움이 생길 수 있으므로 주의하여 기재해주세요.</li>
-                <li>기재된 내용을 확인 할 수 없는 경우, 수상이 취소될 수 있습니다.</li>
-                <li>해킹 및 악의적인 접근이 확인될 경우 즉시 로그콘 실격 처리되며 제재를 가하겠습니다.</li>
-            </ul>
-        </div>
+                <div class="rank_small">
+                    <span class="ranking_comment">
+                        <%= users[0].PROFILE_COMMENT %>
+                    </span>
+                    <br>
+                    <span class="rank_school">학교 : <%= users[0].SCHOOL %></span>
+                </div>  
+
+                <br>
+            </div>
+
+            <!-- 2등 -->
+            <div class="ranking_second">
+
+                <span class="ranking_number_second">2</span> &nbsp; 
+                <span class="ranking_id"><%= users[1].ID %></span> &nbsp;
+                <span class="ranking_pts"><%= users[1].SCORE %> Pts</span>
+                <br>
+                <div class="rank_small">
+                    <span class="ranking_comment">
+                        <%= users[1].PROFILE_COMMENT %>
+                    </span>
+                    <br>
+                    <span class="rank_school">학교 : <%= users[1].SCHOOL %></span>
+                </div>  
+
+                <br>
+            </div>
+
+            <!-- 3등 -->
+            <div class="ranking_third">
+
+                <span class="ranking_number_third">3</span> &nbsp; 
+                <span class="ranking_id"><%= users[2].ID %></span> &nbsp;
+                <span class="ranking_pts"><%= users[2].SCORE %> Pts</span>
+                <br>
+                <div class="rank_small">
+                    <span class="ranking_comment">
+                        <%= users[2].PROFILE_COMMENT %>
+                    </span>
+                    <br>
+                    <span class="rank_school">학교 : <%= users[2].SCHOOL %></span>
+                </div>  
+
+                <br>
+            </div>
+
+            <!-- 4등부터 for문 -->
+            <% for (let i = 3; i < users.length; i++) { %>
+                <div class="ranking_item">
+
+                    <span class="ranking_number"><%= count++ %></span> &nbsp; 
+                    <span class="ranking_id"><%= users[i].ID %></span> &nbsp;
+                    <span class="ranking_pts"><%= users[i].SCORE %> Pts</span>
+                    <br>
+                    <div class="rank_small">
+                        <span class="ranking_comment">
+                            <%= users[i].PROFILE_COMMENT %> 
+                        </span>
+                        <br>
+                        <span class="rank_school">학교 : <%= users[i].SCHOOL %></span>
+                    </div>  
+                    <br>
+                </div>
+            <% } %>
+
+
+            
+            <!-- <div class="ranking_top">
+
+                <span class="ranking_number_first">1</span> &nbsp; 
+                <span class="ranking_id">hawawa</span> &nbsp;
+                <span class="ranking_pts">3700 Pts</span>
+                <br>
+                <div class="rank_small">
+                    <span class="ranking_comment">
+                        하와와 여고생쟝 열심히 해서 일등한 것이에양 호에에엥. 호의가 계속되면 호에엥인것이에요 호에에에에에에에에에엥
+                    </span>
+                    <br>
+                    <span class="rank_school">학교 : sunrin</span>
+                </div>  
+
+                <br>
+            </div>
+            
+
+
+        
+            <div class="ranking_second">
+
+            
+                <span class="ranking_number_second">2</span> &nbsp; 
+                <span class="ranking_id">lorem</span> &nbsp;
+                <span class="ranking_pts">3500 Pts</span>
+                <br>
+                <div class="rank_small">
+                    <span class="ranking_comment">
+                        치킨이 먹고 싶어요 치킨 주세요
+                    </span>
+                    <br>
+                    <span class="rank_school">학교 : 오류중학교</span>
+                </div>  
+
+                <br>
+            </div>
+            
+
+
+
+
+            <div class="ranking_third">
+
+            
+                <span class="ranking_number_third">3</span> &nbsp; 
+                <span class="ranking_id">dinoking</span> &nbsp;
+                <span class="ranking_pts">3000 Pts</span>
+                <br>
+                <div class="rank_small">
+                    <span class="ranking_comment">
+                        호연찡 다이★스키★
+                    </span>
+                    <br>
+                    <span class="rank_school">학교 : 오류중학교</span>
+                </div>  
+
+                <br>
+            </div>
+                
+
+
+
+            <div class="ranking_item">
+
+
+                <span class="ranking_number">4</span> &nbsp; 
+                <span class="ranking_id">김두한</span> &nbsp;
+                <span class="ranking_pts">2999 Pts</span>
+                <br>
+                <div class="rank_small">
+                    <span class="ranking_comment">
+                        다함께 폭☆사 하자! 
+                    </span>
+                    <br>
+                    <span class="rank_school">학교 : 폭발중학교</span>
+                </div>  
+
+                <br>
+            </div>
+                
+
+            <div class="ranking_item">
+
+
+                <span class="ranking_number">5</span> &nbsp; 
+                <span class="ranking_id">심영</span> &nbsp;
+                <span class="ranking_pts">2500 Pts</span>
+                <br>
+                <div class="rank_small">
+                    <span class="ranking_comment">
+                        에엑따! 김두한 대장?! 다시는 안하겠소 다시는 안하겠소
+                    </span>
+                    <br>
+                    <span class="rank_school">학교 : 검정고시(백병원)</span>
+                </div>  
+                
+                <br>   
+            </div>
+                
+            <div class="ranking_item">
+
+
+                <span class="ranking_number">6</span> &nbsp; 
+                <span class="ranking_id">조병옥</span> &nbsp;
+                <span class="ranking_pts">2000 Pts</span>
+                <br>
+                <div class="rank_small">
+                    <span class="ranking_comment">
+                        나! 조병옥이야!!!! 아주 빵빵 터트리고 있어요
+                    </span>
+                    <br>
+                    <span class="rank_school">학교 : 검정고시(백병원)</span>
+                </div> 
+                <br>
+            </div> 
+            
+            
+                
+
+        </div> -->
+
+
+
+
+
+
 
     </main>
 
@@ -105,7 +280,7 @@
         <form action="/login" method="POST">
             <div class="modal-content">
                 <h4>로그인</h4>
-
+            
                 <div class="row">
                     <div class="input-field col s6">
                         <input name="id" placeholder="guchiman12" id="Lusername" type="text" class="validate" minlength="5" maxlength="20" required>
@@ -116,7 +291,7 @@
                         <label for="Lpassword">Password</label>
                     </div>
                 </div>
-
+                
             </div>
             <div class="modal-footer">
                 <button type="submit" class="waves-effect btn-flat submit-button">로그인</button>
@@ -130,7 +305,7 @@
         <form action="/register" method="POST">
             <div class="modal-content">
                 <h4>회원가입</h4>
-
+            
                 <div class="row">
                     <div class="input-field col s12">
                         <input name="id" placeholder="guchiman12" id="Rusername" type="text" class="validate" minlength="5" maxlength="20" required>
@@ -176,13 +351,13 @@
                         <input name="grade" value="중학생" type="radio" checked />
                         <span>중학생</span>
                     </label>
-                     &nbsp; &nbsp; &nbsp;
+                     &nbsp; &nbsp; &nbsp; 
                     <label>
                         <input name="grade" value="고등학생" type="radio" />
                         <span>고등학생</span>
                     </label>
                 </div>
-
+                
             </div>
             <div class="modal-footer">
                 <button type="submit" class="waves-effect btn-flat submit-button">회원가입</button>
@@ -267,7 +442,7 @@
                                     <input name="grade" value="중학생" type="radio" checked />
                                     <span>중학생</span>
                                 </label>
-                                 &nbsp; &nbsp; &nbsp;
+                                 &nbsp; &nbsp; &nbsp; 
                                 <label>
                                     <input name="grade" value="고등학생" type="radio" />
                                     <span>고등학생</span>
@@ -285,4 +460,3 @@
         </form>
     </div>
 </body>
-</html>

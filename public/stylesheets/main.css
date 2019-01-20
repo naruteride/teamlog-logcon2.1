@@ -1,4 +1,4 @@
-/* @font-face{ 
+@font-face{ 
     font-family:'SeoulNamsan';
     src:url('../fonts/SeoulNamsanL.ttf') format('truetype');
     font-weight: normal;
@@ -9,20 +9,6 @@
     src:url('../fonts/SeoulNamsanB.ttf') format('truetype'); 
     font-weight: bold; 
     font-style: normal; 
-} */
-
-/* server */
-@font-face{ 
-    font-family:'SeoulNamsan';
-    src:url('fonts/SeoulNamsanL.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face{ 
-    font-family:'SeoulNamsan';
-    src:url('fonts/SeoulNamsanB.ttf') format('truetype'); 
-    font-weight: bold; 
-    font-style: normal; 
 }
 
 :root {
@@ -31,7 +17,7 @@
 
 html, body {
     margin: 0;
-    font-family: "SeoulNamsan", "gulim";
+    font-family: "SeoulNamsan", "sans-serif";
     width: 100vw;
     overflow-x: hidden;
     background-color: #ffffff
@@ -75,7 +61,7 @@ nav .brand-logo {
 
 #logo-cover {
     height: 110px;
-    background-image: url("images/logos/logo-white.svg");
+    background-image: url("../images/logos/logo-white.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 80%;
@@ -87,7 +73,7 @@ nav .brand-logo {
 }
 
 #menu-icon {
-    background-image: url("images/bars-red.svg");
+    background-image: url("../images/bars-red.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 70%;
@@ -151,7 +137,7 @@ main {
 .image_block {
     width: 100%;
     height: 200px;
-    background-image: url("images/logos/logcon-text.svg");
+    background-image: url("../images/logos/logcon-text.svg");
     background-position: 0 center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -217,7 +203,7 @@ main {
 }
 
 ._404bg {
-    background-image: url("images/404.svg");
+    background-image: url("../images/404.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 160%;
@@ -229,6 +215,156 @@ main {
     font-family: Courier, "SeoulNamsan";
 }
 
+
+.tab > a {
+    /* color: rgba(68,138,255,0.7) !important; */
+}
+
+.problem-type {
+    background-position: 24px center;
+    background-repeat: no-repeat;
+    background-size: 25px;
+}
+
+.PT-network {
+    background-image: url("../images/network.svg");
+}
+.PT-server {
+    background-image: url("../images/server.svg");
+}
+.PT-web {
+    background-image: url("../images/web.svg");
+}
+
+
+.text-small {
+    font-size: 1.0rem;
+}
+.text-center {
+    text-align: center;
+}
+
+
+/* 랭킹 */
+
+.ranking_item:nth-child(2n){
+    background-color : #eee;
+}
+.ranking{
+    
+    /* width: 800px; */
+}
+.ranking_top{
+    
+    font-size: 275%;
+    padding-right: 20%;
+    
+    
+    
+}
+.ranking_second{
+    font-size: 250%;
+    background-color : #eee;
+}
+.ranking_third{
+    font-size : 225%;
+    
+}
+.ranking_item{
+    font-size : 200%;
+    
+}
+.ranking_pts{
+    font-size: 60%;
+    color : rgba(0, 0, 0, 0.5)
+}
+.ranking_number{
+    font-size: 150%;
+    color: #c3262e;
+    
+}
+.ranking_number_first{
+    color:#FFE641;
+    font-size: 150%;
+    text-shadow: 1px 2px 1px #FFD732;
+}
+.ranking_number_second{
+    color:#fff;
+    font-size: 150%;
+    text-shadow: 1px 2px 1px #787878;
+}
+.ranking_number_third{
+    color:#9F814F;
+    font-size: 150%;
+    text-shadow: 1px 2px 1px #957745;
+}
+
+.rank_small{
+    font-size : 50%;
+    color : rgba(0, 0, 0, 7)
+}
+
+/*notice*/
+
+
+.notice_box {
+    font-size: 150%;
+    padding: 1em calc(2em + 25px) 1em 1em;
+    margin: 1em 0;
+    background: #eee;
+    display: table;
+    border-left: 5px solid var(--point-color);
+    background-position: calc(100% - 10px) 10px;
+    background-size: 25px;
+    margin-top : 30px;
+    box-sizing: unset;
+    line-height: 200%;
+
+}
+.notice_fix {
+    border-color:#FA7268;
+    box-shadow: 0 0 5px #FA726877;
+    
+}
+.gray_bg{
+    background-color: #fff;
+    border-left: 5px solid #787878;
+    border-radius: 4px;
+    padding: 0.3pc 0.8pc;
+    padding-left: 1pc;
+    padding-right: 1pc;
+    /* font-style: ; */
+    font-family: sans-serif;
+}
+.notice_title{
+    color:#000;
+}
+/* challenge */
+
+.problem {
+    width : 800px;
+}
+.problem_title{
+    font-size:300%;
+}
+.problem_content
+{
+    font-size:200%;
+    line-height: 180%;
+}
+.problem_link{
+    font-size: 200%;
+}
+.flag-form-cover {
+    width: calc(100% - 100px);
+}
+.flex {
+    display: flex;
+    align-items: center;
+}
+.problem-from-button {
+    width: 70px !important;
+}
 @media (max-width: 992px) {
     .nav-wrapper {
         padding-left: 0;
@@ -244,6 +380,12 @@ main {
     .notice_block ul {
         padding-left: 2em;
     }
+    .notice_box ul {
+        padding-left: 0;
+    }
+    .problem {
+        width: 90%;
+    }
 }
 
 @media (max-width: 601px) {
@@ -255,6 +397,9 @@ main {
     }
     .big-emoticon {
         font-size: 3rem;
+    }
+    .notice_box {
+        padding: 1em;
     }
 }
 
@@ -271,9 +416,6 @@ main {
 
 }
 
-.text-small {
-    font-size: 1.0rem;
-}
-.text-center {
-    text-align: center;
+.text-white {
+    color: white !important;
 }

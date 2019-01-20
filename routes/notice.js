@@ -9,7 +9,8 @@ router.get('/',(req,res) => {
             res.render('notice.ejs',{
                 user_id : 'guest',
                 user_school : 'undefined',
-                notice : result
+                notice : result,
+                score : 0
             })
         }
         else{
@@ -19,7 +20,8 @@ router.get('/',(req,res) => {
                 res.render('notice.ejs',{
                     notice : result,
                     user_id : req.session.user,
-                    user_school: req.session.school
+                    user_school: req.session.school,
+                    score : req.session.score
                 })
             }
         }

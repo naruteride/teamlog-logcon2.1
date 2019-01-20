@@ -30,9 +30,9 @@ app.use('/rank',rankRouter);
 app.use('/mypage',myPageRouter);
 app.use('/notice', noticeRouter);
 app.use('/login',loginRouter);
-app.use('/challenge',challengeRouter);
+app.use('/challenges',challengeRouter);
 app.use('/auth',authRouter);
-app.use('/admin',adminRouter);
+app.use('/tligd',adminRouter);
 app.use('/register',registerRouter);
 app.use('/logout',logoutRouter);
 app.set('view engine', 'ejs');
@@ -54,7 +54,7 @@ app.use(function(err, req, res, next) {
   res.render('404.ejs');
 });
 
-app.listen(3000, /*"0.0.0.0",*/ () => {
+app.listen(3000, "0.0.0.0", () => {
   console.log("connect");
 });
 

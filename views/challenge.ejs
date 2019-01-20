@@ -16,20 +16,18 @@
     <script src="../public/scripts/main.js"></script>
 
     <!-- Localhost -->
-    <link rel="shortcut icon" href="images/logos/logcon-logo-24.png">
-    <link rel="stylesheet" href="stylesheets/main.css">
-    <script src="scripts/main.js"></script>
+    <link rel="shortcut icon" href="../images/logos/logcon-logo-24.png">
+    <link rel="stylesheet" href="../stylesheets/main.css">
+    <script src="../scripts/main.js"></script>
 
 </head>
-
-<!-- 오우! 이런곳에서 주석을 찾으셨군요?! 개발자도구좀 볼 줄 아는 놈인가?! 로그콘 페이지 곳곳에서는 개발자들의 다양한 비하힌드 스토리를 찾아보실 수 있습니다. 문제를 플다가 조금 지루해진다면 잠깐 보물찾기 하듯이 비하인드 스토리를 찾아보는건 어떨까요? (사실 이것도 부장님 몰래 만든겁니다ㅎ 걸리면 어떻게 될지 몰라요;;) -->
 
 <body>
     <header>
         <nav>
             <div class="nav-wrapper">
                 <a href="#" data-target="slide-out" class="sidenav-trigger waves-effect"><i id="menu-icon" class="material-icons full hide-on-large-only">  </i></a>
-                <a href="#" class="brand-logo">대문</a>
+                <a href="#" class="brand-logo">문제 내용</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <% if (user_school == "undefined") { %>
                         <li><a href="#login" class="modal-trigger">로그인</a></li>
@@ -37,6 +35,7 @@
                     <% } else { %>
                         <li class="no-hover"><a class="no-hover"><%= user_id %> - <%= score %></a></li>
                         <li><a href="/mypage">내 정보</a></li>
+                        <li><a href="/logout">로그아웃</a></li>
                     <% } %>
                 </ul>
             </div>
@@ -54,6 +53,7 @@
                     <a href="#loginAndRegister" class="modal-trigger">로그인</a>
                 <% } else { %>
                     <a href="/mypage">내 정보</a>
+                    <a href="/logout">로그아웃</a>
                 <% } %>
             </li>
         </ul>
@@ -62,38 +62,43 @@
     </header>
 
     <main>
-        <div class="image_block"></div>
-
-        <div class = "date_block">
-            <h3><span class="sentence">대회일정 : </span> <span class="sentence">2019년 1월 19일 오전 10시 30분 <span class="sentence"> ~ 2019년 1월 20일 오전 10시 30분</span></span></h3>
+        <div class="problem">
+            
+            <span class="problem_title">
+                문제명 : <%= info[0].TITLE %>
+            </span>
+            <%= info[0].SCORE %>
+            <br>
+            <hr>
             <br>
             
-            <hr>
-            <br>
-            <h3><span class="sentence">로그콘이 종료되었습니다!</span></h3>
-            <h5>참가자 여러분 고생하셨습니다! 여러분이 열정적으로 참여해주신 덕분에 로그콘을 성공적으로 끝마칠 수 있었습니다!</h5>
-            <h5>순위권의 중학생분들은 문제풀이 제출 후에 검증을 마치고 추후 수상 방식의 공지가 전달될 것입니다.</h5>
-            <br>
-            <h5>
-                로그콘에 참여하면서 불편했던 점이나 개선할 부분이 있었다면 언제든지 팀로그 페이스북을 통해 알려주세요.
+            <span class="problem_content">
+                <%= info[0].CONTENTS %>
+            </span>
                 <br>
-                여러분들의 따끔한 충고가 더 발전된 로그콘을 만듭니다!
-            </h5>
-            <br>
-            <hr>
-            <br>
-        </div>
-        <div class="notice_block">
-            <!--아쿠아맨 개꿀잼 아쿠아맨 붐은 온다-->
-            <ul>
-                <li>수상은 중학생을 대상으로 진행됩니다. 이 점 참고해주시길 바랍니다.</li>
-                <li>아이디나 코멘트에 부적절한 문구가 있을 경우, 즉시 삭제 조치하겠습니다.</li>
-                <li>이름이나 학교명을 제대로 기재하지 않을 경우, 상품전달과 수상에 어려움이 생길 수 있으므로 주의하여 기재해주세요.</li>
-                <li>기재된 내용을 확인 할 수 없는 경우, 수상이 취소될 수 있습니다.</li>
-                <li>해킹 및 악의적인 접근이 확인될 경우 즉시 로그콘 실격 처리되며 제재를 가하겠습니다.</li>
-            </ul>
-        </div>
+                
+                <br>
 
+            <% if (info[0].FILE_PATH != "false") { %>
+                <a href="<%= info[0].FILE_PATH %>" target="_blank">파일 다운로드 링크</a>
+                <br>
+            <% } %>
+            <br>
+            <br>
+            <div class="row">
+                <form action="/challenges/<%= pid %>" method="POST" class="col s12">
+                    <div class="row flex">
+                        <div class="input-field col s12">
+                                <!-- 로그콘 개최하려고 주요 개발자 몇명은 한 집에 모여서 다같이 개발하고있어요ㅎ -->
+                            <input name="answer" id="flag" type="text" class="validate">
+                            <label for="flag">flag</label>
+                        </div>
+                        <button class="btn waves-effect waves-light right col s1 problem-from-button" type="submit" name="action">제출</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
     </main>
 
     <footer>
@@ -105,7 +110,7 @@
         <form action="/login" method="POST">
             <div class="modal-content">
                 <h4>로그인</h4>
-
+            
                 <div class="row">
                     <div class="input-field col s6">
                         <input name="id" placeholder="guchiman12" id="Lusername" type="text" class="validate" minlength="5" maxlength="20" required>
@@ -116,7 +121,7 @@
                         <label for="Lpassword">Password</label>
                     </div>
                 </div>
-
+                
             </div>
             <div class="modal-footer">
                 <button type="submit" class="waves-effect btn-flat submit-button">로그인</button>
@@ -130,7 +135,7 @@
         <form action="/register" method="POST">
             <div class="modal-content">
                 <h4>회원가입</h4>
-
+            
                 <div class="row">
                     <div class="input-field col s12">
                         <input name="id" placeholder="guchiman12" id="Rusername" type="text" class="validate" minlength="5" maxlength="20" required>
@@ -176,13 +181,13 @@
                         <input name="grade" value="중학생" type="radio" checked />
                         <span>중학생</span>
                     </label>
-                     &nbsp; &nbsp; &nbsp;
+                     &nbsp; &nbsp; &nbsp; 
                     <label>
                         <input name="grade" value="고등학생" type="radio" />
                         <span>고등학생</span>
                     </label>
                 </div>
-
+                
             </div>
             <div class="modal-footer">
                 <button type="submit" class="waves-effect btn-flat submit-button">회원가입</button>
@@ -207,6 +212,7 @@
                                 </div>
                             </div>
                             <div class="row">
+                            <!-- 로그콘 콘솔버전일때 회원가입 업데이트된거 서버에 올려야하는데 갑자기 부모님께 시골 납치됐다면서 못올린다고 연락와서 난리났었음. 다행히 당일 새벽에 돌아와서 금방 올릴 수 있었어여ㅎ -->
                                 <div class="input-field col s12">
                                     <input name="pw" placeholder="•••••••••••••••••••" id="MLpassword" type="password" class="validate" minlength="8" maxlength="20" required>
                                     <label for="MLpassword">Password</label>
@@ -259,6 +265,7 @@
                                 <div class="input-field col s12">
                                     <input name="school" placeholder="오류중학교" id="Mschool" type="text" class="validate" pattern="^[가-힣]*$" title="한글로 띄어쓰기 없이 입력. ex)오류중학교" required disabled>
                                     <label for="Mschool">school</label>
+                                    <!-- 크리스마스때 놀지도 못하고 개발이나 하고있네ㅠㅠ -->
                                 </div>
                             </div>
 
@@ -267,7 +274,7 @@
                                     <input name="grade" value="중학생" type="radio" checked />
                                     <span>중학생</span>
                                 </label>
-                                 &nbsp; &nbsp; &nbsp;
+                                 &nbsp; &nbsp; &nbsp; 
                                 <label>
                                     <input name="grade" value="고등학생" type="radio" />
                                     <span>고등학생</span>
@@ -286,3 +293,4 @@
     </div>
 </body>
 </html>
+    
