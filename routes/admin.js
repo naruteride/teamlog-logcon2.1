@@ -38,13 +38,14 @@ router.post('/insertP',(req,res) => {
     const answer = req.body.answer;
     const score = req.body.score;
     const file = req.body.file;
+    const pType = req.body.pType;
     if(file === ''){
-        db.query('insert into Problems (TITLE,CONTENTS,ANSWER,SCORE) values(?,?,?,?)',[title,content,answer,score]);
-        res.send('<script type="text/javascript">alert("추가완료!♪(๑ᴖ◡ᴖ๑)♪");window.location.href="/admin/insertP";</script>');
+        db.query('insert into Problems (TITLE,CONTENTS,ANSWER,SCORE,PTYPE) values(?,?,?,?,?)',[title,content,answer,score,pType]);
+        res.send('<script type="text/javascript">alert("추가완료!♪(๑ᴖ◡ᴖ๑)♪");window.location.href="/tligd/sibal";</script>');
     }
     else{
-        db.query('insert into Problems (TITLE,CONTENTS,ANSWER,SCORE,FILE_PATH) values(?,?,?,?,?)',[title,content,answer,score,file]);
-        res.send('<script type="text/javascript">alert("추가완료!♪(๑ᴖ◡ᴖ๑)♪");window.location.href="/admin/insertP";</script>');
+        db.query('insert into Problems (TITLE,CONTENTS,ANSWER,SCORE,FILE_PATH,PTYPE) values(?,?,?,?,?,?)',[title,content,answer,score,file,pType]);
+        res.send('<script type="text/javascript">alert("추가완료!♪(๑ᴖ◡ᴖ๑)♪");window.location.href="/tligd/sibal";</script>');
     }
 })
 
@@ -53,7 +54,7 @@ router.post('/upNotice',(req,res) => {
     const content = req.body.content;
     const time = moment().format('MMMM Do YYYY, h:mm:ss a');
     db.query('insert into Notice (TITLE,CONTENTS,TIME) values(?,?,?)',[title,content,time]);
-    res.send('<script type="text/javascript">alert("추가완료!♪(๑ᴖ◡ᴖ๑)♪");window.location.href="/admin";</script>');
+    res.send('<script type="text/javascript">alert("추가완료!♪(๑ᴖ◡ᴖ๑)♪");window.location.href="/tligd";</script>');
 })
 
 router.post('/delUser',(req,res) => {
@@ -61,12 +62,56 @@ router.post('/delUser',(req,res) => {
     db.query('delete from Users where ID = ?',user,(err,result) => {
         if (err) console.log(err);
         if(!result.affectedRows){
-            res.send("<script type='text/javascript'>alert('삭제실패!');window.location.href='/admin/delUser';</script>");
+            res.send("<script type='text/javascript'>alert('존재하지 않는 유저입니다.');window.location.href='/tligd/delUser';</script>");
         }
         else{
-            res.send('<script type="text/javascript">alert("삭제완료!♪(๑ᴖ◡ᴖ๑)♪");window.location.href="/admin";</script>');
+            res.send('<script type="text/javascript">alert("삭제완료!♪(๑ᴖ◡ᴖ๑)♪");window.location.href="/tligd";</script>');
+            console.log(user + '의 계정삭제');
         }
     })
 })
+
+router.get('/userList',(req,res) => {
+    if(!(req.session.user === 'admin'))
+        res.send('<script type="text/javascript">alert("관리자가 아니시군요?٩(๑`ȏ´๑)۶");window.location.href="/";</script>');
+    else{
+            db.query('select ID,PROFILE_COMMENT,GRADE from Users',(err,result) => {
+            if(err) console.log(err);
+            res.render('userList.ejs',{
+                users : result
+            })
+        })
+    }
+})
+
+router.get('/sibal',(req,res) => {
+    db.query('ALTER TABLE Problems AUTO_INCREMENT=1');
+    db.query('SET @COUNT = 0');
+    db.query('UPDATE Problems SET Problems.ID = @COUNT:=@COUNT+1;');
+    res.send('<script type="text/javascript">alert("재정렬 완료");window.location.href="/tligd";</script>');
+})
+
+router.get('/deleteP',(req,res) => {
+    if(!(req.session.user === 'admin'))
+        res.send('<script type="text/javascript">alert("관리자가 아니시군요?٩(๑`ȏ´๑)۶");window.location.href="/";</script>');
+    else
+        res.sendFile(path.join(__dirname,'../views', 'deleteP.html'));
+})
+
+router.post('/deleteP',(req,res) => {
+    const user = req.body.user;
+    db.query('delete from Problems where TITLE = ?',user,(err,result) => {
+        if (err) console.log(err);
+        if(!result.affectedRows){
+            res.send("<script type='text/javascript'>alert('존재하지 않는 유저입니다.');window.location.href='/tligd/deleteP';</script>");
+        }
+        else{
+            res.send('<script type="text/javascript">alert("삭제완료!♪(๑ᴖ◡ᴖ๑)♪");window.location.href="/tligd/sibal";</script>');
+            console.log(user + '문제 삭제');
+        }
+    })
+})
+
+
 
 module.exports = router;

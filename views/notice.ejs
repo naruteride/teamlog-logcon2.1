@@ -22,14 +22,12 @@
 
 </head>
 
-<!-- 오우! 이런곳에서 주석을 찾으셨군요?! 개발자도구좀 볼 줄 아는 놈인가?! 로그콘 페이지 곳곳에서는 개발자들의 다양한 비하힌드 스토리를 찾아보실 수 있습니다. 문제를 플다가 조금 지루해진다면 잠깐 보물찾기 하듯이 비하인드 스토리를 찾아보는건 어떨까요? (사실 이것도 부장님 몰래 만든겁니다ㅎ 걸리면 어떻게 될지 몰라요;;) -->
-
 <body>
     <header>
         <nav>
             <div class="nav-wrapper">
                 <a href="#" data-target="slide-out" class="sidenav-trigger waves-effect"><i id="menu-icon" class="material-icons full hide-on-large-only">  </i></a>
-                <a href="#" class="brand-logo">대문</a>
+                <a href="#" class="brand-logo">공지사항</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <% if (user_school == "undefined") { %>
                         <li><a href="#login" class="modal-trigger">로그인</a></li>
@@ -37,6 +35,7 @@
                     <% } else { %>
                         <li class="no-hover"><a class="no-hover"><%= user_id %> - <%= score %></a></li>
                         <li><a href="/mypage">내 정보</a></li>
+                        <li><a href="/logout">로그아웃</a></li>
                     <% } %>
                 </ul>
             </div>
@@ -54,6 +53,7 @@
                     <a href="#loginAndRegister" class="modal-trigger">로그인</a>
                 <% } else { %>
                     <a href="/mypage">내 정보</a>
+                    <a href="/logout">로그아웃</a>
                 <% } %>
             </li>
         </ul>
@@ -62,50 +62,41 @@
     </header>
 
     <main>
-        <div class="image_block"></div>
-
-        <div class = "date_block">
-            <h3><span class="sentence">대회일정 : </span> <span class="sentence">2019년 1월 19일 오전 10시 30분 <span class="sentence"> ~ 2019년 1월 20일 오전 10시 30분</span></span></h3>
-            <br>
-            
-            <hr>
-            <br>
-            <h3><span class="sentence">로그콘이 종료되었습니다!</span></h3>
-            <h5>참가자 여러분 고생하셨습니다! 여러분이 열정적으로 참여해주신 덕분에 로그콘을 성공적으로 끝마칠 수 있었습니다!</h5>
-            <h5>순위권의 중학생분들은 문제풀이 제출 후에 검증을 마치고 추후 수상 방식의 공지가 전달될 것입니다.</h5>
-            <br>
-            <h5>
-                로그콘에 참여하면서 불편했던 점이나 개선할 부분이 있었다면 언제든지 팀로그 페이스북을 통해 알려주세요.
-                <br>
-                여러분들의 따끔한 충고가 더 발전된 로그콘을 만듭니다!
-            </h5>
-            <br>
-            <hr>
-            <br>
-        </div>
-        <div class="notice_block">
-            <!--아쿠아맨 개꿀잼 아쿠아맨 붐은 온다-->
-            <ul>
-                <li>수상은 중학생을 대상으로 진행됩니다. 이 점 참고해주시길 바랍니다.</li>
-                <li>아이디나 코멘트에 부적절한 문구가 있을 경우, 즉시 삭제 조치하겠습니다.</li>
-                <li>이름이나 학교명을 제대로 기재하지 않을 경우, 상품전달과 수상에 어려움이 생길 수 있으므로 주의하여 기재해주세요.</li>
-                <li>기재된 내용을 확인 할 수 없는 경우, 수상이 취소될 수 있습니다.</li>
-                <li>해킹 및 악의적인 접근이 확인될 경우 즉시 로그콘 실격 처리되며 제재를 가하겠습니다.</li>
-            </ul>
-        </div>
+    <div class="notice_fix notice_box">
+    
+    <ul>
+        <li>플래그는 <span class="gray_bg">TeamLog{플래그}</span> 형식으로 제출하셔야 합니다.</li>
+        <li>문의는 팀로그 페이스북(@sunrintog) 또는 010-5390-9318로 연락 부탁드립니다.</li>
+        <li>플래그를 타인에게 공유·배포시 즉시 실격되며, 로그콘 참가자격이 박탈됩니다.</li>
+        <!--개발하면서 달팬 옆에 있는 이름없는 파스타 갔는데 ㄹㅇ JMT였음 여러분들도 꼭 가세요.-->
+        <li>로그콘이 종료되었습니다. 당분간 문제는 계속해서 풀어보실 수 있지만 점수는 변동되지 않습니다.</li>
+    </ul>
+    </div>
+    
+    <% for (var i = 0; i < notice.length; i++) { %>
+            <div class="notice_box">
+                <h5 class="notice_title">제목 : <%= notice[i].TITLE %></h5>
+                <ul>
+                    <li><%= notice[i].CONTENTS %></li>
+                    
+                </ul>
+                <h6><i><%= notice[i].TIME %></i></h6>
+            </div>
+        <% } %>
+        
 
     </main>
 
     <footer>
 
     </footer>
-
+    
     <!-- Modal Structure -->
     <div id="login" class="modal">
         <form action="/login" method="POST">
             <div class="modal-content">
                 <h4>로그인</h4>
-
+            
                 <div class="row">
                     <div class="input-field col s6">
                         <input name="id" placeholder="guchiman12" id="Lusername" type="text" class="validate" minlength="5" maxlength="20" required>
@@ -116,7 +107,7 @@
                         <label for="Lpassword">Password</label>
                     </div>
                 </div>
-
+                
             </div>
             <div class="modal-footer">
                 <button type="submit" class="waves-effect btn-flat submit-button">로그인</button>
@@ -130,7 +121,7 @@
         <form action="/register" method="POST">
             <div class="modal-content">
                 <h4>회원가입</h4>
-
+            
                 <div class="row">
                     <div class="input-field col s12">
                         <input name="id" placeholder="guchiman12" id="Rusername" type="text" class="validate" minlength="5" maxlength="20" required>
@@ -176,13 +167,13 @@
                         <input name="grade" value="중학생" type="radio" checked />
                         <span>중학생</span>
                     </label>
-                     &nbsp; &nbsp; &nbsp;
+                     &nbsp; &nbsp; &nbsp; 
                     <label>
                         <input name="grade" value="고등학생" type="radio" />
                         <span>고등학생</span>
                     </label>
                 </div>
-
+                
             </div>
             <div class="modal-footer">
                 <button type="submit" class="waves-effect btn-flat submit-button">회원가입</button>
@@ -267,7 +258,7 @@
                                     <input name="grade" value="중학생" type="radio" checked />
                                     <span>중학생</span>
                                 </label>
-                                 &nbsp; &nbsp; &nbsp;
+                                 &nbsp; &nbsp; &nbsp; 
                                 <label>
                                     <input name="grade" value="고등학생" type="radio" />
                                     <span>고등학생</span>
@@ -285,4 +276,3 @@
         </form>
     </div>
 </body>
-</html>
