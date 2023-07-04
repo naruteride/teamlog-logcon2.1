@@ -5,7 +5,10 @@ var db_config = {
     port: process.env.DATABASE_PORT || 3306,
     user: process.env.DATABASE_USER || 'teamlog',
     password: process.env.DATABASE_PASSWORD || 'xlafhrm',
-    database: process.env.DATABASE_DATABASE || 'LOGCON'
+    database: process.env.DATABASE_DATABASE || 'LOGCON',
+    ssl: {
+        rejectUnauthorized: process.env.DATABASE_SSL_REJECT_UNAUTHORIZED ? true : false
+    }
 };
 
 /*
