@@ -40,12 +40,12 @@ router.post('/',(req,res) => {
                         const transporter = nodemailer.createTransport({
                             service: 'Gmail',
                             auth: {
-                                user: 'teamlogsr@gmail.com', 
-                                pass: 'teamlogzzang2017'
+                                user: process.env.MAIL_AUTH_USER || 'teamlogsr@gmail.com', 
+                                pass: process.env.MAIL_AUTH_PASS || 'teamlogzzang2017'
                             }
                         });
                         const mailOptions = {
-                            from: 'teamlogsr@gmail.com',
+                            from: process.env.MAIL_AUTH_USER || 'teamlogsr@gmail.com',
                             to: tmpEmail ,
                             subject: 'LOGCON 인증',
                             text: '가입완료를 위해 <'+authkey+'> 를 입력해주세요'
