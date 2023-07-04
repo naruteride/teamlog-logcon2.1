@@ -1,11 +1,11 @@
 const mysql = require('mysql');
 
 var db_config = {
-    host: '192.168.129.1',
-    port: 3306,
-    user: 'teamlog',
-    password: 'xlafhrm',
-    database: 'LOGCON'
+    host: process.env.DATABASE_HOST || '192.168.129.1',
+    port: process.env.DATABASE_PORT || 3306,
+    user: process.env.DATABASE_USER || 'teamlog',
+    password: process.env.DATABASE_PASSWORD || 'xlafhrm',
+    database: process.env.DATABASE_DATABASE || 'LOGCON'
 };
 
 /*
